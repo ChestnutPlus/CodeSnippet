@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.google.android.flexbox.FlexboxLayout;
 
 import x.chestnut.code.snippet.base.BaseActivity;
-import x.chestnut.code.snippet.ui.textView.TextViewActivity;
+import x.chestnut.code.snippet.ui.fragmentLazyLoad.FragmentLazyLoadActivity;
 import x.chestnut.code.snippet.utils.ConvertUtils;
 
 public class MainActivity extends BaseActivity {
@@ -38,6 +38,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void lazyLoadViewAfterOnResume() {
-        addView("TextView", view -> startActivity(TextViewActivity.class));
+        addView("FragmentLazyLoad", view -> startActivity(FragmentLazyLoadActivity.class));
     }
 }
