@@ -2,6 +2,8 @@ package x.chestnut.code.snippet.ui.fragmentLazyLoad;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
@@ -11,6 +13,7 @@ import x.chestnut.code.snippet.R;
 public class BlankFragment extends LazyLoadFragment {
 
     /*声明传入的参数*/
+    private String TAG = "BlankFragment";
     private static final String ARG_PARAM1 = "param1";
     private String mParam1;
 
@@ -51,12 +54,14 @@ public class BlankFragment extends LazyLoadFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View rootView) {
+        Log.i(TAG,mParam1 + ", initView");
         textView = rootView.findViewById(R.id.tv_index);
     }
 
     @Override
     protected void lazyLoad() {
+        Log.i(TAG,mParam1 + ", lazyLoad");
         new MockMetAsyncTask(this).execute(mParam1);
     }
 
@@ -64,10 +69,16 @@ public class BlankFragment extends LazyLoadFragment {
         textView.setText(mParam1);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i(TAG,mParam1 + ", onDestroyView");
+    }
+
     /**
      * 用于模拟网络耗时操作
      */
-    private class MockMetAsyncTask extends AsyncTask<String,Void,String> {
+    private static class MockMetAsyncTask extends AsyncTask<String,Void,String> {
 
         private WeakReference<BlankFragment> blankFragmentWeakReference;
 

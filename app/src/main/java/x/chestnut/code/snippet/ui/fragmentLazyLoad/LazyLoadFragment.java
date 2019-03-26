@@ -28,10 +28,22 @@ public abstract class LazyLoadFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(setContentView(), container, false);
-        initView();
+        initView(rootView);
         isInitView = true;
         isCanLoadData();
         return rootView;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            isVisible = true;
+            isCanLoadData();
+        }
+        else {
+            isVisible = false;
+        }
     }
 
     @Override
@@ -46,7 +58,7 @@ public abstract class LazyLoadFragment extends Fragment {
     }
 
     private void isCanLoadData(){
-        if(isInitView && isVisible ){
+        if(isInitView && isVisible){
             lazyLoad();
             isInitView = false;
             isVisible = false;
@@ -54,6 +66,6 @@ public abstract class LazyLoadFragment extends Fragment {
     }
 
     protected abstract int setContentView();
-    protected abstract void initView();
+    protected abstract void initView(View rootView);
     protected abstract void lazyLoad();
 }
