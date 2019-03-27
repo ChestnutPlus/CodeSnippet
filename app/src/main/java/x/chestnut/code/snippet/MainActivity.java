@@ -7,8 +7,8 @@ import android.widget.TextView;
 import com.google.android.flexbox.FlexboxLayout;
 
 import x.chestnut.code.snippet.base.BaseActivity;
-import x.chestnut.code.snippet.ui.fragmentLazyLoad.FragmentLazyLoadActivity;
-import x.chestnut.code.snippet.ui.hideShow.AddFragmentActivity;
+import x.chestnut.code.snippet.ui.fragment.bottomTab.BottomTabFragmentActivity;
+import x.chestnut.code.snippet.ui.fragment.lazyLoad.FragmentLazyLoadActivity;
 import x.chestnut.code.snippet.utils.ConvertUtils;
 
 public class MainActivity extends BaseActivity {
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void lazyLoadViewAfterOnResume() {
-        addView("ViewPagerFragmentLazyLoad", view -> startActivity(FragmentLazyLoadActivity.class));
-        addView("AddFragment", view -> startActivity(AddFragmentActivity.class));
+        addView("LazyLoadFragment", view -> startActivity(FragmentLazyLoadActivity.class));
+        addView("BottomTabFragment", view -> startActivity(BottomTabFragmentActivity.class));
     }
 }

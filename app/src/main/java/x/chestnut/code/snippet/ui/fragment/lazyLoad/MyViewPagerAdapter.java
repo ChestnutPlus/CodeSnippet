@@ -1,4 +1,4 @@
-package x.chestnut.code.snippet.ui.fragmentLazyLoad;
+package x.chestnut.code.snippet.ui.fragment.lazyLoad;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

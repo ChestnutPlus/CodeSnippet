@@ -1,4 +1,4 @@
-package x.chestnut.code.snippet.ui.fragmentLazyLoad;
+package x.chestnut.code.snippet.ui.fragment.lazyLoad;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -67,12 +67,6 @@ public class BlankFragment extends LazyLoadFragment {
 
     private void updateView() {
         textView.setText(mParam1);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i(TAG,mParam1 + ", onDestroyView");
     }
 
     /**

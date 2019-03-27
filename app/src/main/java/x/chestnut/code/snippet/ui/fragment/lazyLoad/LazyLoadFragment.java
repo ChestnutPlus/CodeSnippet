@@ -1,4 +1,4 @@
-package x.chestnut.code.snippet.ui.fragmentLazyLoad;
+package x.chestnut.code.snippet.ui.fragment.lazyLoad;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,18 +32,6 @@ public abstract class LazyLoadFragment extends Fragment {
         isInitView = true;
         isCanLoadData();
         return rootView;
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            isVisible = true;
-            isCanLoadData();
-        }
-        else {
-            isVisible = false;
-        }
     }
 
     @Override
