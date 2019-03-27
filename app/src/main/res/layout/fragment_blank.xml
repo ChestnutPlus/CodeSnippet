@@ -24,4 +24,11 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </FrameLayout>

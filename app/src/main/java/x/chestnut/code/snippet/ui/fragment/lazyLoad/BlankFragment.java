@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
@@ -21,6 +22,7 @@ public class BlankFragment extends LazyLoadFragment {
     public BlankFragment() {}
 
     private TextView textView;
+    private ProgressBar progressBar;
 
     /**
      * 使用这个方法进行实例化
@@ -57,15 +59,18 @@ public class BlankFragment extends LazyLoadFragment {
     protected void initView(View rootView) {
         Log.i(TAG,mParam1 + ", initView");
         textView = rootView.findViewById(R.id.tv_index);
+        progressBar = rootView.findViewById(R.id.progress);
     }
 
     @Override
     protected void lazyLoad() {
         Log.i(TAG,mParam1 + ", lazyLoad");
+        progressBar.setVisibility(View.VISIBLE);
         new MockMetAsyncTask(this).execute(mParam1);
     }
 
     private void updateView() {
+        progressBar.setVisibility(View.INVISIBLE);
         textView.setText(mParam1);
     }
 
