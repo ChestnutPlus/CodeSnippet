@@ -1,15 +1,17 @@
-package x.chestnut.code.snippet.ui.recyclerView.baseUse;
+package x.chestnut.code.snippet.ui.recyclerView.clickEvent;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
+import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseBean;
 
 /**
  * <pre>
@@ -23,10 +25,10 @@ import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
  * </pre>
  */
 
-public class RecyclerViewBaseUseFragment extends BaseFragment{
+public class ClickRecyclerFragment extends BaseFragment{
 
-    public static RecyclerViewBaseUseFragment newInstance() {
-        RecyclerViewBaseUseFragment fragment = new RecyclerViewBaseUseFragment();
+    public static ClickRecyclerFragment newInstance() {
+        ClickRecyclerFragment fragment = new ClickRecyclerFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -42,7 +44,13 @@ public class RecyclerViewBaseUseFragment extends BaseFragment{
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
-        BaseUseAdapter baseAdapter = new BaseUseAdapter(getBeans());
+        ClickBaseUseAdapter baseAdapter = new ClickBaseUseAdapter(getBeans());
+        baseAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, Object data) {
+                Toast.makeText(getContext(),"click:"+position,Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(baseAdapter);
     }
 

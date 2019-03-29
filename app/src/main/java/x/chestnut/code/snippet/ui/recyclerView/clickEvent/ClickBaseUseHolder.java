@@ -1,4 +1,4 @@
-package x.chestnut.code.snippet.ui.recyclerView.baseUse;
+package x.chestnut.code.snippet.ui.recyclerView.clickEvent;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -21,13 +21,15 @@ import x.chestnut.code.snippet.R;
  * </pre>
  */
 
-public class BaseUseHolder extends RecyclerView.ViewHolder{
+public class ClickBaseUseHolder extends RecyclerView.ViewHolder{
 
     private ImageView imageView;
     private TextView tv;
+    View layout;
 
-    public BaseUseHolder(@NonNull View itemView) {
+    public ClickBaseUseHolder(@NonNull View itemView) {
         super(itemView);
+        layout = itemView.findViewById(R.id.layout);
         imageView = itemView.findViewById(R.id.img);
         tv = itemView.findViewById(R.id.tv);
     }

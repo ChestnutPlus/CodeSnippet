@@ -2,6 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/layout"
+    android:clickable="true"
+    android:focusable="true"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
@@ -10,4 +13,15 @@
         tools:src="@drawable/girl_1"
         android:layout_width="100dp"
         android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_alignTop="@id/img"
+        android:layout_toEndOf="@id/img"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:lines="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

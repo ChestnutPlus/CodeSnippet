@@ -17,11 +17,11 @@ import x.chestnut.code.snippet.R;
  * </pre>
  */
 
-public abstract class BackFragmentScrollBaseActivity extends ScrollBaseActivity{
+public abstract class BackFragmentBaseActivity extends ScrollBaseActivity{
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_scroll_back_fragment;
+        return R.layout.activity_no_scroll_back_fragment;
     }
 
     /*添加fragment*/

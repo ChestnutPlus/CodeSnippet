@@ -1,11 +1,10 @@
-package x.chestnut.code.snippet.ui.recyclerView.baseUse;
+package x.chestnut.code.snippet.ui.recyclerView.multiItem;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import x.chestnut.code.snippet.R;
 
@@ -13,7 +12,7 @@ import x.chestnut.code.snippet.R;
  * <pre>
  *     author: Chestnut
  *     blog  : http://www.jianshu.com/u/a0206b5f4526
- *     time  : 2019/3/27 23:35
+ *     time  : 2019/3/29 22:13
  *     desc  :
  *     thanks To:
  *     dependent on:
@@ -21,22 +20,16 @@ import x.chestnut.code.snippet.R;
  * </pre>
  */
 
-public class BaseUseHolder extends RecyclerView.ViewHolder{
+public class ViewHolderItemImg extends RecyclerView.ViewHolder{
 
     private ImageView imageView;
-    private TextView tv;
 
-    public BaseUseHolder(@NonNull View itemView) {
+    public ViewHolderItemImg(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.img);
-        tv = itemView.findViewById(R.id.tv);
     }
 
     public void setImageView(@DrawableRes int imageView) {
         this.imageView.setImageResource(imageView);
-    }
-
-    public void setContent(String content) {
-        this.tv.setText(content);
     }
 }

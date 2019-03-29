@@ -34,14 +34,14 @@ public class BaseUseAdapter extends RecyclerView.Adapter<BaseUseHolder> {
     @Override
     public BaseUseHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_item, viewGroup, false);
-        BaseUseHolder holder = new BaseUseHolder(view);
-        return holder;
+        return new BaseUseHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BaseUseHolder baseUseHolder, int i) {
         BaseUseBean useBean = baseUseBeanList.get(i);
         baseUseHolder.setImageView(useBean.bgRes);
+        baseUseHolder.setContent(useBean.content);
     }
 
     @Override
