@@ -8,6 +8,7 @@ import x.chestnut.code.snippet.ui.recyclerView.itemDecoration.ItemDecorationFrag
 import x.chestnut.code.snippet.ui.recyclerView.itemDecorationSection.ItemDecorationSectionFragment;
 import x.chestnut.code.snippet.ui.recyclerView.itemDecorationStickySection.ItemDecorationStickySectionFragment;
 import x.chestnut.code.snippet.ui.recyclerView.multiItem.MultiItemRecyclerFragment;
+import x.chestnut.code.snippet.ui.recyclerView.scrollImg.ScrollImgItemFragment;
 
 public class RecyclerViewActivity extends BackFragmentBaseActivity {
     @Override
@@ -20,5 +21,6 @@ public class RecyclerViewActivity extends BackFragmentBaseActivity {
         addView("ItemDecoration实现Section",view -> startFragment(ItemDecorationSectionFragment.newInstance()));
         addView("ItemDecoration实现StickySection",view -> startFragment(ItemDecorationStickySectionFragment.newInstance()));
         addView("HeaderFooter实现",view -> startFragment(HeaderFooterFragment.newInstance()));
+        addView("Scroll-Img-Item",view -> startFragment(ScrollImgItemFragment.newInstance()));
     }
 }

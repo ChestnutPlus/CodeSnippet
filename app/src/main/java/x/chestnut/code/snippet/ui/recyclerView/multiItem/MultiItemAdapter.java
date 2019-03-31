@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import x.chestnut.code.snippet.R;
+import x.chestnut.code.snippet.ui.recyclerView.scrollImg.ItemScrollImgBean;
+import x.chestnut.code.snippet.ui.recyclerView.scrollImg.ViewHolderScrollImgItem;
 
 /**
  * <pre>
@@ -28,12 +30,16 @@ public class MultiItemAdapter extends RecyclerView.Adapter {
     public static final int ITEM_IMG = 1;
     public static final int ITEM_TV = 2;
     public static final int ITEM_IMG_TV = 3;
+    public static final int ITEM_Scroll_IMG_TV = 4;
 
     //数据源
     private List<IMultiType> mList;
 
-    public MultiItemAdapter(List<IMultiType> list) {
+    private RecyclerView recyclerView;
+
+    public MultiItemAdapter(List<IMultiType> list, RecyclerView recyclerView) {
         mList = list;
+        this.recyclerView = recyclerView;
     }
 
     @NonNull
@@ -53,6 +59,10 @@ public class MultiItemAdapter extends RecyclerView.Adapter {
             case ITEM_IMG_TV:
                 item = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_item, viewGroup, false);
                 holder = new ViewHolderItemImgTxt(item);
+                break;
+            case ITEM_Scroll_IMG_TV:
+                item = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_scroll_img, viewGroup, false);
+                holder = new ViewHolderScrollImgItem(item, recyclerView);
                 break;
         }
         return holder;
@@ -80,6 +90,14 @@ public class MultiItemAdapter extends RecyclerView.Adapter {
             ViewHolderItemImgTxt viewHolderItemImgTxt = (ViewHolderItemImgTxt) viewHolder;
             viewHolderItemImgTxt.setContent(itemImgTxtBean.content);
             viewHolderItemImgTxt.setImageView(itemImgTxtBean.bgRes);
+
+        }
+        else if (viewHolder.getItemViewType() == ITEM_Scroll_IMG_TV) {
+
+            ItemScrollImgBean itemScrollImgBean = (ItemScrollImgBean) mList.get(i);
+            ViewHolderScrollImgItem scrollImgItem = (ViewHolderScrollImgItem) viewHolder;
+            scrollImgItem.setPosition(i);
+            scrollImgItem.setImageView(itemScrollImgBean.bgRes);
 
         }
     }

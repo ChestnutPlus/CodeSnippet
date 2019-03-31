@@ -1,4 +1,4 @@
-package x.chestnut.code.snippet.ui.recyclerView.multiItem;
+package x.chestnut.code.snippet.ui.recyclerView.scrollImg;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +11,11 @@ import java.util.Random;
 
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
+import x.chestnut.code.snippet.ui.recyclerView.multiItem.IMultiType;
+import x.chestnut.code.snippet.ui.recyclerView.multiItem.ItemImgBean;
+import x.chestnut.code.snippet.ui.recyclerView.multiItem.ItemImgTxtBean;
+import x.chestnut.code.snippet.ui.recyclerView.multiItem.ItemTxtBean;
+import x.chestnut.code.snippet.ui.recyclerView.multiItem.MultiItemAdapter;
 
 /**
  * <pre>
@@ -24,10 +29,10 @@ import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
  * </pre>
  */
 
-public class MultiItemRecyclerFragment extends BaseFragment{
+public class ScrollImgItemFragment extends BaseFragment{
 
-    public static MultiItemRecyclerFragment newInstance() {
-        MultiItemRecyclerFragment fragment = new MultiItemRecyclerFragment();
+    public static ScrollImgItemFragment newInstance() {
+        ScrollImgItemFragment fragment = new ScrollImgItemFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -81,7 +86,8 @@ public class MultiItemRecyclerFragment extends BaseFragment{
                 "当我凝视到你的眼，当我听到你的声音，当我闻到你秀发上的淡淡清香，当我感受到我剧烈的心跳，我明白了：你是我今生的唯一！"
         };
         Random random = new Random(System.currentTimeMillis());
-        for (int i = 0; i < 50; i++) {
+
+        for (int i = 0; i < 5; i++) {
             switch (random.nextInt(100)%3) {
                 case 0:
                     ItemImgBean itemImgBean = new ItemImgBean();
@@ -101,6 +107,32 @@ public class MultiItemRecyclerFragment extends BaseFragment{
                     break;
             }
         }
+
+        ItemScrollImgBean itemScrollImgBean = new ItemScrollImgBean();
+        itemScrollImgBean.bgRes = bgRes[0];
+        beans.add(itemScrollImgBean);
+
+        for (int i = 0; i < 5; i++) {
+            switch (random.nextInt(100)%3) {
+                case 0:
+                    ItemImgBean itemImgBean = new ItemImgBean();
+                    itemImgBean.bgRes = bgRes[random.nextInt(100)%bgRes.length];
+                    beans.add(itemImgBean);
+                    break;
+                case 1:
+                    ItemTxtBean itemTxtBean = new ItemTxtBean();
+                    itemTxtBean.content = contents[random.nextInt(100)%contents.length];
+                    beans.add(itemTxtBean);
+                    break;
+                case 2:
+                    ItemImgTxtBean itemImgTxtBean = new ItemImgTxtBean();
+                    itemImgTxtBean.bgRes = bgRes[random.nextInt(100)%bgRes.length];
+                    itemImgTxtBean.content = contents[random.nextInt(100)%contents.length];
+                    beans.add(itemImgTxtBean);
+                    break;
+            }
+        }
+
         return beans;
     }
 }
