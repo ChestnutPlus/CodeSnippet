@@ -85,32 +85,41 @@ public class ScrollImgItemFragment extends BaseFragment{
                 "西湖美不美，美；东湖美不美，美！不过，有你在我面前，足以使我陶醉。",
                 "当我凝视到你的眼，当我听到你的声音，当我闻到你秀发上的淡淡清香，当我感受到我剧烈的心跳，我明白了：你是我今生的唯一！"
         };
+        int[] longBgRes = {
+            R.drawable.long_0,
+            R.drawable.long_1,
+            R.drawable.long_2,
+            R.drawable.long_3,
+            R.drawable.long_4,
+        };
         Random random = new Random(System.currentTimeMillis());
 
-        for (int i = 0; i < 8; i++) {
-            switch (random.nextInt(100)%3) {
-                case 0:
-                    ItemImgBean itemImgBean = new ItemImgBean();
-                    itemImgBean.bgRes = bgRes[random.nextInt(100)%bgRes.length];
-                    beans.add(itemImgBean);
-                    break;
-                case 1:
-                    ItemTxtBean itemTxtBean = new ItemTxtBean();
-                    itemTxtBean.content = contents[random.nextInt(100)%contents.length];
-                    beans.add(itemTxtBean);
-                    break;
-                case 2:
-                    ItemImgTxtBean itemImgTxtBean = new ItemImgTxtBean();
-                    itemImgTxtBean.bgRes = bgRes[random.nextInt(100)%bgRes.length];
-                    itemImgTxtBean.content = contents[random.nextInt(100)%contents.length];
-                    beans.add(itemImgTxtBean);
-                    break;
+        for (int longBgRe : longBgRes) {
+            for (int i = 0; i < 8; i++) {
+                switch (random.nextInt(100) % 3) {
+                    case 0:
+                        ItemImgBean itemImgBean = new ItemImgBean();
+                        itemImgBean.bgRes = bgRes[random.nextInt(100) % bgRes.length];
+                        beans.add(itemImgBean);
+                        break;
+                    case 1:
+                        ItemTxtBean itemTxtBean = new ItemTxtBean();
+                        itemTxtBean.content = contents[random.nextInt(100) % contents.length];
+                        beans.add(itemTxtBean);
+                        break;
+                    case 2:
+                        ItemImgTxtBean itemImgTxtBean = new ItemImgTxtBean();
+                        itemImgTxtBean.bgRes = bgRes[random.nextInt(100) % bgRes.length];
+                        itemImgTxtBean.content = contents[random.nextInt(100) % contents.length];
+                        beans.add(itemImgTxtBean);
+                        break;
+                }
             }
-        }
 
-        ItemScrollImgBean itemScrollImgBean = new ItemScrollImgBean();
-        itemScrollImgBean.bgRes = bgRes[0];
-        beans.add(itemScrollImgBean);
+            ItemScrollImgBean itemScrollImgBean = new ItemScrollImgBean();
+            itemScrollImgBean.bgRes = longBgRe;
+            beans.add(itemScrollImgBean);
+        }
 
         for (int i = 0; i < 8; i++) {
             switch (random.nextInt(100)%3) {

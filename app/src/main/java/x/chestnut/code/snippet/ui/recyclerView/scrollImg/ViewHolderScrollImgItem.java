@@ -4,13 +4,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import x.chestnut.code.snippet.R;
 
@@ -29,10 +24,12 @@ import x.chestnut.code.snippet.R;
 
 public class ViewHolderScrollImgItem extends RecyclerView.ViewHolder {
 
+    private int scrollYTopOffset = 100;
+    private int scrollYBottomOffset = 100;
+
     private ImageView imageView;
     private int position = 0;
     private int maxScrollItemTop = 0;
-    private int marginBottom = -1;
 
     public ViewHolderScrollImgItem(@NonNull View itemView, RecyclerView recyclerView) {
         super(itemView);
@@ -70,37 +67,29 @@ public class ViewHolderScrollImgItem extends RecyclerView.ViewHolder {
                         // 当最后一个可见，并非完全可见的时候，初始化位置
                         if (linearLayoutManager.findLastVisibleItemPosition() == position) {
                             imageView.setPadding(paddingLeft, paddingTop, paddingRight, 0);
-                            Log.i("ViewHolderScrollImgItem", "paddingTop:"+(paddingTop));
                         }
 
                         // 当为第一个可见，并非完全可见的时候，初始化位置
                         else if (linearLayoutManager.findFirstVisibleItemPosition() == position) {
                             imageView.setPadding(paddingLeft, -paddingTop, paddingRight, 0);
-                            Log.i("ViewHolderScrollImgItem", "-paddingTop:"+(-paddingTop));
                         }
 
                         //  并且为屏幕上最后一个或者是最前一个完全可见的时候
                         //  才开始移动
                         else if (linearLayoutManager.findFirstCompletelyVisibleItemPosition() <= position
                                 && position <= linearLayoutManager.findLastCompletelyVisibleItemPosition()) {
-
                             View view = linearLayoutManager.findViewByPosition(position);
-
                             if (view!=null) {
-
-                                if (marginBottom<0)
-                                    marginBottom = getMarginBottom(recyclerView);
-
                                 //可移动的距离
                                 int scrollImg = realHeight - imageViewHeight;
                                 if (view.getY()> maxScrollItemTop)
-                                    maxScrollItemTop = (int) view.getY() + marginBottom;
-
-                                //图片移动的距离
-                                int temp = (int) (view.getY() * (scrollImg + paddingTop) / maxScrollItemTop) - paddingTop;
-                                imageView.setPadding(paddingLeft, temp, paddingRight, 0);
-
-                                Log.i("ViewHolderScrollImgItem", "temp:" + temp + ", y:" + view.getY() + ", scrollScreen:"+ maxScrollItemTop);
+                                    maxScrollItemTop = (int) view.getY();
+                                if (maxScrollItemTop-scrollYBottomOffset>view.getY() && view.getY()>scrollYTopOffset) {
+                                    //图片移动的距离
+                                    int temp = (int) ((view.getY() - scrollYTopOffset) * (scrollImg + paddingTop)
+                                            / (maxScrollItemTop - scrollYBottomOffset - scrollYTopOffset)) - paddingTop;
+                                    imageView.setPadding(paddingLeft, temp, paddingRight, 0);
+                                }
                             }
                         }
                     }
@@ -108,19 +97,6 @@ public class ViewHolderScrollImgItem extends RecyclerView.ViewHolder {
             }
         };
         recyclerView.addOnScrollListener(onScrollListener);
-    }
-
-    private int getMarginBottom(View view) {
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        int result = 0;
-        if (layoutParams instanceof LinearLayout.LayoutParams)
-            return ((LinearLayout.LayoutParams) layoutParams).bottomMargin;
-        else if (layoutParams instanceof FrameLayout.LayoutParams)
-            return ((FrameLayout.LayoutParams) layoutParams).bottomMargin;
-        else if (layoutParams instanceof RelativeLayout.LayoutParams)
-            return ((RelativeLayout.LayoutParams) layoutParams).bottomMargin;
-        else
-            return result;
     }
 
     public void setImageView(@DrawableRes int img) {
