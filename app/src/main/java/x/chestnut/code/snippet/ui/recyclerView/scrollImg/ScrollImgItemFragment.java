@@ -87,7 +87,7 @@ public class ScrollImgItemFragment extends BaseFragment{
         };
         Random random = new Random(System.currentTimeMillis());
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             switch (random.nextInt(100)%3) {
                 case 0:
                     ItemImgBean itemImgBean = new ItemImgBean();
@@ -112,7 +112,7 @@ public class ScrollImgItemFragment extends BaseFragment{
         itemScrollImgBean.bgRes = bgRes[0];
         beans.add(itemScrollImgBean);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             switch (random.nextInt(100)%3) {
                 case 0:
                     ItemImgBean itemImgBean = new ItemImgBean();
