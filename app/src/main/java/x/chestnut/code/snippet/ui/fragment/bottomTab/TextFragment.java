@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import x.chestnut.code.snippet.R;
+import x.chestnut.code.snippet.base.BaseFragment;
 
 /**
  * <pre>
@@ -18,7 +19,7 @@ import x.chestnut.code.snippet.R;
  *     update log:
  * </pre>
  */
-public class TextFragment extends BaseFragment{
+public class TextFragment extends BaseFragment {
 
     private String TAG = "TextFragment";
     private static final String ARG_PARAM1 = "param1";

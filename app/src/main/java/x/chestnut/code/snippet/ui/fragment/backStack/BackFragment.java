@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import x.chestnut.code.snippet.R;
-import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
+import x.chestnut.code.snippet.base.BaseFragment;
 
 /**
  * <pre>
@@ -69,7 +69,7 @@ public class BackFragment extends BaseFragment {
 
     @Override
     protected int setContentView() {
-        return R.layout.fragment_back_1;
+        return R.layout.fragment_back;
     }
 
     @Override

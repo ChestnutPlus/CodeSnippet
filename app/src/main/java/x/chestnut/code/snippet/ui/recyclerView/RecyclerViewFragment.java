@@ -1,6 +1,8 @@
 package x.chestnut.code.snippet.ui.recyclerView;
 
-import x.chestnut.code.snippet.base.BackFragmentBaseActivity;
+import android.view.View;
+
+import x.chestnut.code.snippet.base.ScrollBaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.RecyclerViewBaseUseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.clickEvent.ClickRecyclerFragment;
 import x.chestnut.code.snippet.ui.recyclerView.controlSpeed.ControlSpeedRecyclerViewFragment;
@@ -10,12 +12,32 @@ import x.chestnut.code.snippet.ui.recyclerView.itemDecorationSection.ItemDecorat
 import x.chestnut.code.snippet.ui.recyclerView.itemDecorationStickySection.ItemDecorationStickySectionFragment;
 import x.chestnut.code.snippet.ui.recyclerView.multiItem.MultiItemRecyclerFragment;
 import x.chestnut.code.snippet.ui.recyclerView.scrollImg.ScrollImgItemFragment;
-import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.XItemActivity;
+import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.XItemFragment;
 
-public class RecyclerViewActivity extends BackFragmentBaseActivity {
+/**
+ * <pre>
+ *     author: Chestnut
+ *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     time  : 2019/4/2 23:50
+ *     desc  :
+ *     thanks To:
+ *     dependent on:
+ *     update log:
+ * </pre>
+ */
+
+public class RecyclerViewFragment extends ScrollBaseFragment{
+
+    public RecyclerViewFragment() {
+
+    }
+
+    public static RecyclerViewFragment newInstance() {
+        return new RecyclerViewFragment();
+    }
+
     @Override
-    public void lazyLoadViewAfterOnResume() {
-        setTitle("RecyclerView示例");
+    protected void onLazyViewCreate(View rootView) {
         addView("基本用法",view -> startFragment(RecyclerViewBaseUseFragment.newInstance()));
         addView("多种Item",view -> startFragment(MultiItemRecyclerFragment.newInstance()));
         addView("设置点击事件",view -> startFragment(ClickRecyclerFragment.newInstance()));
@@ -24,7 +46,12 @@ public class RecyclerViewActivity extends BackFragmentBaseActivity {
         addView("ItemDecoration实现StickySection",view -> startFragment(ItemDecorationStickySectionFragment.newInstance()));
         addView("HeaderFooter实现",view -> startFragment(HeaderFooterFragment.newInstance()));
         addView("Scroll-Img-Item",view -> startFragment(ScrollImgItemFragment.newInstance()));
-        addView("X-Item-封装",view -> startActivity(XItemActivity.class));
+        addView("X-Item-封装",view -> startFragment(XItemFragment.newInstance()));
         addView("Control-RecyclerView-Speed",view -> startFragment(ControlSpeedRecyclerViewFragment.newInstance()));
+    }
+
+    @Override
+    protected void onViewResume() {
+        setTitle("RecyclerView示例");
     }
 }

@@ -10,8 +10,9 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 
 import x.chestnut.code.snippet.R;
+import x.chestnut.code.snippet.base.BaseFragment;
 
-public class BlankFragment extends LazyLoadFragment {
+public class BlankFragment extends BaseFragment {
 
     /*声明传入的参数*/
     private String TAG = "BlankFragment";
@@ -37,36 +38,36 @@ public class BlankFragment extends LazyLoadFragment {
         return fragment;
     }
 
-    /**
-     * 为了防止屏幕旋转的情况，需要取出参数
-     * 在 new 的时候去设置好参数
-     * @param savedInstanceState state
-     */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-        }
-    }
-
     @Override
     protected int setContentView() {
         return R.layout.fragment_blank;
     }
 
     @Override
-    protected void initView(View rootView) {
-        Log.i(TAG,mParam1 + ", initView");
+    protected void onViewCreate(View rootView) {
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+        }
+        Log.i(TAG,mParam1 + ", onViewCreate");
         textView = rootView.findViewById(R.id.tv_index);
         progressBar = rootView.findViewById(R.id.progress);
     }
 
     @Override
-    protected void lazyLoad() {
-        Log.i(TAG,mParam1 + ", lazyLoad");
+    protected void onViewResume() {
+        Log.i(TAG,mParam1 + ", onViewResume");
         progressBar.setVisibility(View.VISIBLE);
         new MockMetAsyncTask(this).execute(mParam1);
+    }
+
+    @Override
+    protected void onViewPause() {
+        Log.i(TAG,mParam1 + ", onViewPause");
+    }
+
+    @Override
+    protected void onViewDestroy() {
+        Log.i(TAG,mParam1 + ", onViewDestroy");
     }
 
     private void updateView() {

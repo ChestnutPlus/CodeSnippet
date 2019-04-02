@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import x.chestnut.code.snippet.R;
-import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
+import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.base.XItem;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.baseUse.ItemImg;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.baseUse.ItemTxt;
@@ -41,7 +41,7 @@ public class CircleRecyclerViewFragment extends BaseFragment{
     }
 
     @Override
-    protected void onViewCreate(View rootView) {
+    protected void onLazyViewCreate(View rootView) {
         CircleRecyclerView recyclerView = (CircleRecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setNeedLoop(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -52,21 +52,6 @@ public class CircleRecyclerViewFragment extends BaseFragment{
         CircleSimpleAdapter circleSimpleAdapter = new CircleSimpleAdapter();
         recyclerView.setAdapter(circleSimpleAdapter);
         circleSimpleAdapter.addAll(getBeans());
-    }
-
-    @Override
-    protected void onViewResume() {
-
-    }
-
-    @Override
-    protected void onViewPause() {
-
-    }
-
-    @Override
-    protected void onViewDestroy() {
-
     }
 
     public List<XItem> getBeans() {

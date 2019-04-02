@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import x.chestnut.code.snippet.R;
-import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
+import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseAdapter;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseBean;
 
@@ -39,27 +39,12 @@ public class ControlSpeedRecyclerViewFragment extends BaseFragment{
     }
 
     @Override
-    protected void onViewCreate(View rootView) {
+    protected void onLazyViewCreate(View rootView) {
         SpeedRecyclerView recyclerView = (SpeedRecyclerView) rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         BaseUseAdapter baseAdapter = new BaseUseAdapter(getBeans());
         recyclerView.setAdapter(baseAdapter);
-    }
-
-    @Override
-    protected void onViewResume() {
-
-    }
-
-    @Override
-    protected void onViewPause() {
-
-    }
-
-    @Override
-    protected void onViewDestroy() {
-
     }
 
     public List<BaseUseBean> getBeans() {

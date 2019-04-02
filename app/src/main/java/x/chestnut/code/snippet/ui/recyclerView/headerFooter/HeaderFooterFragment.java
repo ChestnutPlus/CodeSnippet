@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import x.chestnut.code.snippet.R;
-import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
+import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseAdapter;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseBean;
 
@@ -39,11 +39,11 @@ public class HeaderFooterFragment extends BaseFragment{
 
     @Override
     protected int setContentView() {
-        return R.layout.fragment_recycler_view;
+        return R.layout.layout_recycler_view;
     }
 
     @Override
-    protected void onViewCreate(View rootView) {
+    protected void onLazyViewCreate(View rootView) {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
 
         //Manager的不同也要娶适配
@@ -89,21 +89,6 @@ public class HeaderFooterFragment extends BaseFragment{
             wrapperHeaderFooterAdapter.addFootView(header);
         }
         recyclerView.setAdapter(wrapperHeaderFooterAdapter);
-    }
-
-    @Override
-    protected void onViewResume() {
-
-    }
-
-    @Override
-    protected void onViewPause() {
-
-    }
-
-    @Override
-    protected void onViewDestroy() {
-
     }
 
     public List<BaseUseBean> getBeans() {

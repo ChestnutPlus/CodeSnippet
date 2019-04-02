@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import x.chestnut.code.snippet.R;
-import x.chestnut.code.snippet.ui.fragment.bottomTab.BaseFragment;
+import x.chestnut.code.snippet.base.BaseFragment;
 
 /**
  * <pre>
@@ -34,31 +34,16 @@ public class RecyclerViewBaseUseFragment extends BaseFragment{
 
     @Override
     protected int setContentView() {
-        return R.layout.fragment_recycler_view;
+        return R.layout.layout_recycler_view;
     }
 
     @Override
-    protected void onViewCreate(View rootView) {
+    protected void onLazyViewCreate(View rootView) {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         BaseUseAdapter baseAdapter = new BaseUseAdapter(getBeans());
         recyclerView.setAdapter(baseAdapter);
-    }
-
-    @Override
-    protected void onViewResume() {
-
-    }
-
-    @Override
-    protected void onViewPause() {
-
-    }
-
-    @Override
-    protected void onViewDestroy() {
-
     }
 
     public List<BaseUseBean> getBeans() {
