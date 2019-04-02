@@ -1,18 +1,3 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<FrameLayout xmlns:tools="http://schemas.android.com/tools"-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:layout_height="200dp"-->
-    <!--android:layout_width="match_parent">-->
-    <!--<ImageView-->
-        <!--android:id="@+id/img"-->
-        <!--android:paddingTop="600px"-->
-        <!--android:layout_margin="10dp"-->
-        <!--tools:src="@drawable/girl_1"-->
-        <!--android:scaleType="center"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
-<!--</FrameLayout>-->
-
 <ImageView android:id="@+id/img"
     tools:src="@drawable/girl_1"
     android:scaleType="centerCrop"

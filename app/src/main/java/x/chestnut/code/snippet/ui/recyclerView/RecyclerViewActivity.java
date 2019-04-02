@@ -3,12 +3,14 @@ package x.chestnut.code.snippet.ui.recyclerView;
 import x.chestnut.code.snippet.base.BackFragmentBaseActivity;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.RecyclerViewBaseUseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.clickEvent.ClickRecyclerFragment;
+import x.chestnut.code.snippet.ui.recyclerView.controlSpeed.ControlSpeedRecyclerViewFragment;
 import x.chestnut.code.snippet.ui.recyclerView.headerFooter.HeaderFooterFragment;
 import x.chestnut.code.snippet.ui.recyclerView.itemDecoration.ItemDecorationFragment;
 import x.chestnut.code.snippet.ui.recyclerView.itemDecorationSection.ItemDecorationSectionFragment;
 import x.chestnut.code.snippet.ui.recyclerView.itemDecorationStickySection.ItemDecorationStickySectionFragment;
 import x.chestnut.code.snippet.ui.recyclerView.multiItem.MultiItemRecyclerFragment;
 import x.chestnut.code.snippet.ui.recyclerView.scrollImg.ScrollImgItemFragment;
+import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.XItemActivity;
 
 public class RecyclerViewActivity extends BackFragmentBaseActivity {
     @Override
@@ -22,5 +24,7 @@ public class RecyclerViewActivity extends BackFragmentBaseActivity {
         addView("ItemDecoration实现StickySection",view -> startFragment(ItemDecorationStickySectionFragment.newInstance()));
         addView("HeaderFooter实现",view -> startFragment(HeaderFooterFragment.newInstance()));
         addView("Scroll-Img-Item",view -> startFragment(ScrollImgItemFragment.newInstance()));
+        addView("X-Item-封装",view -> startActivity(XItemActivity.class));
+        addView("Control-RecyclerView-Speed",view -> startFragment(ControlSpeedRecyclerViewFragment.newInstance()));
     }
 }

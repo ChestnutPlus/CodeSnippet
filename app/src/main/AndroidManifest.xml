@@ -6,7 +6,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.fragment.backStack.BackFragmentActivity"></activity>
+        <activity android:name=".ui.recyclerView.xItemPackage.XItemActivity"></activity>
+        <activity android:name=".ui.fragment.backStack.BackFragmentActivity" />
         <activity android:name=".ui.fragment.FragmentActivity" />
         <activity android:name=".ui.recyclerView.RecyclerViewActivity" />
         <activity android:name=".ui.fragment.bottomTab.BottomTabFragmentActivity" />
