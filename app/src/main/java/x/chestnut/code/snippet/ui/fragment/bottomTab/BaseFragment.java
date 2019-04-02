@@ -1,6 +1,7 @@
 package x.chestnut.code.snippet.ui.fragment.bottomTab;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(setContentView(), container, false);
         onViewCreate(rootView);
         return rootView;
