@@ -4,6 +4,7 @@ import android.view.View;
 
 import x.chestnut.code.snippet.base.ScrollBaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.baseUse.XItemBaseUseFragment;
+import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.centerScale.CenterScaleFragment;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.circleScrollRecyclerView.CircleRecyclerViewFragment;
 
 /**
@@ -32,6 +33,7 @@ public class XItemFragment extends ScrollBaseFragment{
     protected void onLazyViewCreate(View rootView) {
         addView("基本用法-轻松实现多Item布局",view -> startFragment(XItemBaseUseFragment.newInstance()));
         addView("无限循环RecyclerView",view -> startFragment(CircleRecyclerViewFragment.newInstance()));
+        addView("中心放大RecyclerView",view -> startFragment(CenterScaleFragment.newInstance()));
     }
 
     @Override
