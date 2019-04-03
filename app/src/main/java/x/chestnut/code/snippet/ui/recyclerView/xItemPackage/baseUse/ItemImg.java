@@ -21,6 +21,17 @@ import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.base.XItem;
  */
 public class ItemImg extends XItem<Integer> {
 
+    private int height = 0;
+    private int width = 0;
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
     public ItemImg(Integer integer) {
         super(integer);
     }
@@ -34,6 +45,12 @@ public class ItemImg extends XItem<Integer> {
     public void onBindViewHolder(XHolder holder, int position) {
         ImageView imageView = (ImageView) holder.getViewById(R.id.img);
         imageView.setImageResource(data);
+        if (height!=0 && width!=0) {
+            ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
+            layoutParams.height = height;
+            layoutParams.width = width;
+            imageView.setLayoutParams(layoutParams);
+        }
     }
 
     @Override

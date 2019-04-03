@@ -46,8 +46,8 @@ public class RecyclerViewFragment extends ScrollBaseFragment{
         addView("ItemDecoration实现StickySection",view -> startFragment(ItemDecorationStickySectionFragment.newInstance()));
         addView("HeaderFooter实现",view -> startFragment(HeaderFooterFragment.newInstance()));
         addView("Scroll-Img-Item",view -> startFragment(ScrollImgItemFragment.newInstance()));
-        addView("X-Item-封装",view -> startFragment(XItemFragment.newInstance()));
         addView("Control-RecyclerView-Speed",view -> startFragment(ControlSpeedRecyclerViewFragment.newInstance()));
+        addView("X-Item-封装",view -> startFragment(XItemFragment.newInstance()));
     }
 
     @Override
