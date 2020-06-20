@@ -4,6 +4,8 @@ import android.view.View;
 
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.ScrollBaseFragment;
+import x.chestnut.code.snippet.other.OtherExampleFragment;
+import x.chestnut.code.snippet.ui.drawable.DrawableExampleFragment;
 import x.chestnut.code.snippet.ui.fragment.FragmentExampleFragment;
 import x.chestnut.code.snippet.ui.recyclerView.RecyclerViewFragment;
 
@@ -31,6 +33,8 @@ public class MainFragment extends ScrollBaseFragment{
     protected void onLazyViewCreate(View rootView) {
         addView("Fragment", view -> startFragment(FragmentExampleFragment.newInstance()));
         addView("RecyclerView", view -> startFragment(RecyclerViewFragment.newInstance()));
+        addView("Drawable", view -> startFragment(DrawableExampleFragment.newInstance()));
+        addView("Other Example", view -> startFragment(OtherExampleFragment.newInstance()));
     }
 
     @Override
