@@ -1,8 +1,8 @@
 package x.chestnut.code.snippet.ui.recyclerView.xItemPackage.circleScrollRecyclerView;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import android.view.View;
 
 import java.util.ArrayList;

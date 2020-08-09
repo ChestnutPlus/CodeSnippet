@@ -1,7 +1,7 @@
 package x.chestnut.code.snippet.ui.fragment.bottomTab;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseActivity;

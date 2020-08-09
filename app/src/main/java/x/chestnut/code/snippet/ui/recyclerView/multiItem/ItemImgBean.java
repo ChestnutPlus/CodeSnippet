@@ -1,6 +1,6 @@
 package x.chestnut.code.snippet.ui.recyclerView.multiItem;
 
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 /**
  * <pre>

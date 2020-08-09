@@ -1,11 +1,10 @@
 package x.chestnut.code.snippet.ui.fragment.lazyLoad;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseActivity;
 

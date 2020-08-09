@@ -1,9 +1,9 @@
 package x.chestnut.code.snippet.base;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -49,7 +49,7 @@ public abstract class ScrollBaseFragment extends BaseFragment{
         }
     }
 
-    protected void addView(String content, View.OnClickListener onClickListener) {
+    protected void addView(CharSequence content, View.OnClickListener onClickListener) {
         FlexboxLayout flexboxLayout = (FlexboxLayout) rootView.findViewById(R.id.flx);
         TextView textView = new TextView(rootView.getContext());
         textView.setBackground(getResources().getDrawable(R.drawable.tv_bg_round));
