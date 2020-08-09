@@ -20,6 +20,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    android.applicationVariants.all {
+        variant -> variant.outputs.all {
+            outputFileName = "CodeSnippet-${variant.name}" +
+                    "-v${variant.versionName}-${variant.versionCode}.apk"
+        }
+    }
 }
 
 dependencies {
