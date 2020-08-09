@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: '../version.gradle'
 
 android {
     compileSdkVersion 28
@@ -6,8 +7,8 @@ android {
         applicationId "x.chestnut.code.snippet"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode versions.version_code
+        versionName versions.version_name
     }
     buildTypes {
         release {
