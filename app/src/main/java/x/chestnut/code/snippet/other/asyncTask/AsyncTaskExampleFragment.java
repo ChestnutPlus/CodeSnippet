@@ -8,7 +8,7 @@ import x.chestnut.code.snippet.base.ScrollBaseFragment;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2020/3/25 23:00
  *     desc  :
  *     thanks To:

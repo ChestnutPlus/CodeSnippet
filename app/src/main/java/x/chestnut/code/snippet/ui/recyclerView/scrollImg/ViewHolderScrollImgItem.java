@@ -12,7 +12,7 @@ import x.chestnut.code.snippet.R;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/3/30 23:53
  *     desc  :
  *     thanks To:   在固定长宽imageView上,显示图片指定区域

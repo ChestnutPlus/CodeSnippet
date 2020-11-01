@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/3/26 17:16
  *     desc  :
  *     thanks To:

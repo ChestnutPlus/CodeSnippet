@@ -10,7 +10,7 @@ import x.chestnut.code.snippet.R;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/3/29 22:13
  *     desc  :
  *     thanks To:

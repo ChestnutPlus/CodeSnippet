@@ -11,7 +11,7 @@ import x.chestnut.code.snippet.base.BaseFragment;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/3/27 16:06
  *     desc  :
  *     thanks To:

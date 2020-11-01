@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/3/30 17:43
  *     desc  :
  *     thanks To:   https://blog.csdn.net/lmj623565791/article/details/51854533

@@ -8,7 +8,7 @@ import x.chestnut.code.snippet.ui.drawable.roundedBitmapDrawable.RoundDrawableFr
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/4/2 23:39
  *     desc  :
  *     thanks To:

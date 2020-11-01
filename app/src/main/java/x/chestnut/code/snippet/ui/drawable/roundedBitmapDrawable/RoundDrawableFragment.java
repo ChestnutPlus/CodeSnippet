@@ -15,7 +15,7 @@ import x.chestnut.code.snippet.base.BaseFragment;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/4/6 12:47
  *     desc  :
  *     thanks To:   看完这篇文章，我保证你也会用 RoundedBitmapDrawable 创建圆角头像

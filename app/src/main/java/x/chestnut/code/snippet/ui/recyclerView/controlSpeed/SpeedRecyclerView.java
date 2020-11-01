@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 /**
  * <pre>
  *     author: Chestnut
- *     blog  : http://www.jianshu.com/u/a0206b5f4526
+ *     blog  : https://juejin.im/user/676954892408824
  *     time  : 2019/1/4 10:48
  *     desc  : 使用的是，只需要在RecyclerView.Adapter的方法中:，
  *              返回巨大的：Integer.MAX_VALUE;
