@@ -1,16 +1,16 @@
 package x.chestnut.code.snippet.ui.recyclerView.headerFooter;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseAdapter;
@@ -50,11 +50,13 @@ public class HeaderFooterFragment extends BaseFragment{
         switch ((int) (System.currentTimeMillis()%5)) {
             //1.LinearLayoutManager
             case 0:
-                LinearLayoutManager l1 = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+                LinearLayoutManager l1 = new LinearLayoutManager(getActivity(),
+                        LinearLayoutManager.HORIZONTAL,false);
                 recyclerView.setLayoutManager(l1);
                 break;
             case 1:
-                LinearLayoutManager l2 = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+                LinearLayoutManager l2 = new LinearLayoutManager(getActivity(),
+                        LinearLayoutManager.VERTICAL,false);
                 recyclerView.setLayoutManager(l2);
                 break;
             //2.GridLayoutManager
@@ -64,11 +66,13 @@ public class HeaderFooterFragment extends BaseFragment{
                 break;
             //3.StaggeredGridLayoutManager
             case 3:
-                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL);
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(
+                        3,StaggeredGridLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(staggeredGridLayoutManager);
                 break;
             case 4:
-                StaggeredGridLayoutManager s = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+                StaggeredGridLayoutManager s = new StaggeredGridLayoutManager(
+                        3,StaggeredGridLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(s);
                 break;
         }

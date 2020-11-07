@@ -27,7 +27,8 @@ public class DrawableExampleFragment extends ScrollBaseFragment{
 
     @Override
     protected void onLazyViewCreate(View rootView) {
-        addView("RoundDrawable", view -> startFragment(RoundDrawableFragment.newInstance()));
+        addView("RoundDrawable", view ->
+                startFragment(RoundDrawableFragment.newInstance()));
     }
 
     @Override

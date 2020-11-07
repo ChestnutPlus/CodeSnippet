@@ -27,7 +27,8 @@ public class ItemTxt extends XItem<String> {
 
     @Override
     public XHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new XHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_txt, parent,false));
+        return new XHolder(LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.recycler_item_txt, parent,false));
     }
 
     @Override

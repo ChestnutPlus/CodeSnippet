@@ -1,12 +1,12 @@
 package x.chestnut.code.snippet.ui.recyclerView.xItemPackage.centerScale;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.base.XItem;
@@ -39,8 +39,10 @@ public class CenterScaleFragment extends BaseFragment {
 
     @Override
     protected void onLazyViewCreate(View rootView) {
-        CenterScaleRecyclerView recyclerView = (CenterScaleRecyclerView) rootView.findViewById(R.id.recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        CenterScaleRecyclerView recyclerView = (CenterScaleRecyclerView) rootView
+                .findViewById(R.id.recycler_view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         SimpleAdapter simpleAdapter = new SimpleAdapter();
         recyclerView.setAdapter(simpleAdapter);

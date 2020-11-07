@@ -4,10 +4,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.ui.recyclerView.itemDecorationSection.GroupInfo;
 import x.chestnut.code.snippet.ui.recyclerView.itemDecorationSection.GroupInfoCallback;
 
@@ -34,7 +34,8 @@ public class StickySectionItemDecoration extends RecyclerView.ItemDecoration {
     private int dividerHeight;
     private Paint mPaint;
 
-    public StickySectionItemDecoration(GroupInfoCallback groupInfoCallback, int sectionHeight, int dividerHeight) {
+    public StickySectionItemDecoration(GroupInfoCallback groupInfoCallback,
+                                       int sectionHeight, int dividerHeight) {
         this.groupInfoCallback = groupInfoCallback;
         this.sectionHeight = sectionHeight;
         this.dividerHeight = dividerHeight;
@@ -43,7 +44,8 @@ public class StickySectionItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
+                               @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildAdapterPosition(view);
         if (groupInfoCallback!=null) {
@@ -60,7 +62,8 @@ public class StickySectionItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+    public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent,
+                       @NonNull RecyclerView.State state) {
         super.onDraw(c, parent, state);
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -84,7 +87,8 @@ public class StickySectionItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void onDrawOver(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+    public void onDrawOver(@NonNull Canvas c, @NonNull RecyclerView parent,
+                           @NonNull RecyclerView.State state) {
         super.onDrawOver(c, parent, state);
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -139,7 +143,8 @@ public class StickySectionItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
-    private void drawSection(Canvas c, GroupInfo groupInfo, int left, int top, int right, int bottom) {
+    private void drawSection(Canvas c, GroupInfo groupInfo, int left,
+                             int top, int right, int bottom) {
         //绘制Header-Bg
         mPaint.setColor(Color.LTGRAY);
         c.drawRoundRect(left,top,right,bottom,0,0,mPaint);

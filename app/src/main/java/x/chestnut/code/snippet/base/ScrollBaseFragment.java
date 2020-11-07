@@ -1,15 +1,12 @@
 package x.chestnut.code.snippet.base;
 
-import android.content.Intent;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
 
+import androidx.core.content.res.ResourcesCompat;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.utils.ConvertUtils;
 
@@ -27,32 +24,11 @@ import x.chestnut.code.snippet.utils.ConvertUtils;
 
 public abstract class ScrollBaseFragment extends BaseFragment{
 
-    protected void startActivity(Class c) {
-        startActivity(new Intent(getActivity(),c));
-    }
-
-    protected void startFragment(Fragment fragment) {
-        startFragment(fragment,true);
-    }
-
-    protected void startFragment(Fragment fragment, boolean isAddToBackStack) {
-        BaseFragment.startFragment(getActivity(),R.id.frame_layout, fragment,isAddToBackStack);
-    }
-
-    protected void setTitle(String title) {
-        if (getActivity() instanceof AppCompatActivity) {
-            AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-            ActionBar actionBar = appCompatActivity.getSupportActionBar();
-            if (actionBar!=null) {
-                actionBar.setTitle(title);
-            }
-        }
-    }
-
     protected void addView(CharSequence content, View.OnClickListener onClickListener) {
         FlexboxLayout flexboxLayout = (FlexboxLayout) rootView.findViewById(R.id.flx);
         TextView textView = new TextView(rootView.getContext());
-        textView.setBackground(getResources().getDrawable(R.drawable.tv_bg_round));
+        textView.setBackground(ResourcesCompat.getDrawable(getResources(),
+                R.drawable.tv_bg_round, null));
         textView.setText(content);
         textView.setGravity(Gravity.CENTER);
         int padding = ConvertUtils.dp2px(rootView.getContext(), 10);
@@ -60,7 +36,8 @@ public abstract class ScrollBaseFragment extends BaseFragment{
         flexboxLayout.addView(textView);
         int margin = ConvertUtils.dp2px(rootView.getContext(), 5);
         int marginTopBottom = ConvertUtils.dp2px(rootView.getContext(), 5);
-        FlexboxLayout.LayoutParams layoutParams = (FlexboxLayout.LayoutParams) textView.getLayoutParams();
+        FlexboxLayout.LayoutParams layoutParams = (FlexboxLayout.LayoutParams)
+                textView.getLayoutParams();
         layoutParams.setMargins(margin, marginTopBottom, margin, marginTopBottom);
         textView.setClickable(true);
         textView.setFocusable(true);

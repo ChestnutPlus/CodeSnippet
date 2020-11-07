@@ -1,12 +1,12 @@
 package x.chestnut.code.snippet.ui.recyclerView.clickEvent;
 
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.R;
 
 /**
@@ -23,8 +23,8 @@ import x.chestnut.code.snippet.R;
 
 public class ClickBaseUseHolder extends RecyclerView.ViewHolder{
 
-    private ImageView imageView;
-    private TextView tv;
+    private final ImageView imageView;
+    private final TextView tv;
     View layout;
 
     public ClickBaseUseHolder(@NonNull View itemView) {

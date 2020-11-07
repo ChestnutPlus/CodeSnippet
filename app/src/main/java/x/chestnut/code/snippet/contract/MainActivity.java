@@ -13,6 +13,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void lazyLoadViewAfterOnResume() {
-        BaseFragment.startFragment(this,R.id.frame_layout,MainFragment.newInstance(),false);
+        BaseFragment.startFragment(this,R
+                .id.frame_layout,MainFragment.newInstance(),false);
     }
 }

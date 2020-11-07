@@ -2,11 +2,12 @@ package x.chestnut.code.snippet.ui.recyclerView.xItemPackage.centerScale;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.util.AttributeSet;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.View;
 
 /**
  * <pre>
@@ -21,8 +22,8 @@ import android.view.View;
  */
 public class CenterScaleRecyclerView extends RecyclerView {
 
-    private final float mSelectedScale = 1.1f;      //选中的时候，放大的倍数
-    private final float mNotSelectedScale = 0.5f;   //未选中时候的倍数
+    private static final float M_SELECTED_SCALE = 1.1f;      //选中的时候，放大的倍数
+    private static final float M_NOT_SELECTED_SCALE = 0.5f;   //未选中时候的倍数
 
     public CenterScaleRecyclerView(@NonNull Context context) {
         super(context);
@@ -32,7 +33,8 @@ public class CenterScaleRecyclerView extends RecyclerView {
         super(context, attrs);
     }
 
-    public CenterScaleRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyle) {
+    public CenterScaleRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs,
+                                   int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -59,15 +61,17 @@ public class CenterScaleRecyclerView extends RecyclerView {
         int baseEnd = dWidth - baseStartX;
         float scale;
         if (vPivot<dPivot) {
-            scale = (vPivot - baseStartX) * (mSelectedScale - mNotSelectedScale) / (dPivot - baseStartX) + mNotSelectedScale;
+            scale = (vPivot - baseStartX) * (M_SELECTED_SCALE - M_NOT_SELECTED_SCALE)
+                    / (dPivot - baseStartX) + M_NOT_SELECTED_SCALE;
         }
         //右边
         else {
-            scale = (vPivot - dPivot) * (mNotSelectedScale - mSelectedScale) / (baseEnd - dPivot) + mSelectedScale;
+            scale = (vPivot - dPivot) * (M_NOT_SELECTED_SCALE - M_SELECTED_SCALE)
+                    / (baseEnd - dPivot) + M_SELECTED_SCALE;
         }
 
-        scale = scale < mNotSelectedScale ? mNotSelectedScale : scale;
-        scale = scale > mSelectedScale ? mSelectedScale : scale;
+        scale = scale < M_NOT_SELECTED_SCALE ? M_NOT_SELECTED_SCALE : scale;
+        scale = scale > M_SELECTED_SCALE ? M_SELECTED_SCALE : scale;
 
         child.setScaleX(scale);
         child.setScaleY(scale);

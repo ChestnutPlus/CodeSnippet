@@ -1,13 +1,13 @@
 package x.chestnut.code.snippet.ui.recyclerView.baseUse;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.R;
 
 /**
@@ -33,7 +33,8 @@ public class BaseUseAdapter extends RecyclerView.Adapter<BaseUseHolder> {
     @NonNull
     @Override
     public BaseUseHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.recycler_view_item, viewGroup, false);
         return new BaseUseHolder(view);
     }
 

@@ -31,9 +31,12 @@ public class XItemFragment extends ScrollBaseFragment{
 
     @Override
     protected void onLazyViewCreate(View rootView) {
-        addView("基本用法-轻松实现多Item布局",view -> startFragment(XItemBaseUseFragment.newInstance()));
-        addView("无限循环RecyclerView",view -> startFragment(CircleRecyclerViewFragment.newInstance()));
-        addView("中心放大RecyclerView",view -> startFragment(CenterScaleFragment.newInstance()));
+        addView("基本用法-轻松实现多Item布局",view ->
+                startFragment(XItemBaseUseFragment.newInstance()));
+        addView("无限循环RecyclerView",view ->
+                startFragment(CircleRecyclerViewFragment.newInstance()));
+        addView("中心放大RecyclerView",view ->
+                startFragment(CenterScaleFragment.newInstance()));
     }
 
     @Override

@@ -1,18 +1,23 @@
 package x.chestnut.code.snippet.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+import x.chestnut.code.snippet.R;
 
 /**
  * <pre>
@@ -135,6 +140,28 @@ public abstract class BaseFragment extends Fragment {
                 }
             }
             fragmentTransaction.commit();
+        }
+    }
+
+    protected void startActivity(Class c) {
+        startActivity(new Intent(getActivity(),c));
+    }
+
+    protected void startFragment(Fragment fragment) {
+        startFragment(fragment,true);
+    }
+
+    protected void startFragment(Fragment fragment, boolean isAddToBackStack) {
+        BaseFragment.startFragment(getActivity(), R.id.frame_layout, fragment,isAddToBackStack);
+    }
+
+    protected void setTitle(String title) {
+        if (getActivity() instanceof AppCompatActivity) {
+            AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+            ActionBar actionBar = appCompatActivity.getSupportActionBar();
+            if (actionBar!=null) {
+                actionBar.setTitle(title);
+            }
         }
     }
 }

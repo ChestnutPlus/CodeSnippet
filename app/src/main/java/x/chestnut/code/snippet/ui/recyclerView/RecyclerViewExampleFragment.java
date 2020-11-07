@@ -26,14 +26,14 @@ import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.XItemFragment;
  * </pre>
  */
 
-public class RecyclerViewFragment extends ScrollBaseFragment{
+public class RecyclerViewExampleFragment extends ScrollBaseFragment{
 
-    public RecyclerViewFragment() {
+    public RecyclerViewExampleFragment() {
 
     }
 
-    public static RecyclerViewFragment newInstance() {
-        return new RecyclerViewFragment();
+    public static RecyclerViewExampleFragment newInstance() {
+        return new RecyclerViewExampleFragment();
     }
 
     @Override

@@ -1,13 +1,13 @@
 package x.chestnut.code.snippet.ui.recyclerView.clickEvent;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseBean;
 
@@ -25,7 +25,7 @@ import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseBean;
 
 public class ClickBaseUseAdapter extends RecyclerView.Adapter<ClickBaseUseHolder> {
 
-    private List<BaseUseBean> baseUseBeanList;
+    private final List<BaseUseBean> baseUseBeanList;
     private OnItemClickListener mOnItemClickListener;
 
     public ClickBaseUseAdapter(List<BaseUseBean> baseUseBeanList) {
@@ -35,7 +35,8 @@ public class ClickBaseUseAdapter extends RecyclerView.Adapter<ClickBaseUseHolder
     @NonNull
     @Override
     public ClickBaseUseHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.recycler_view_item, viewGroup, false);
         return new ClickBaseUseHolder(view);
     }
 

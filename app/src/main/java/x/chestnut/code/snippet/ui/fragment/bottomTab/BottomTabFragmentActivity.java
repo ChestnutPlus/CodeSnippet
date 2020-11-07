@@ -50,7 +50,8 @@ public class BottomTabFragmentActivity extends BaseActivity {
     private void addFragment(Fragment fragment) {
         /*判断该fragment是否已经被添加过  如果没有被添加  则添加*/
         if (!fragment.isAdded()) {
-            getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, fragment, fragment.getClass().getSimpleName()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,
+                    fragment, fragment.getClass().getSimpleName()).commit();
         }
     }
 

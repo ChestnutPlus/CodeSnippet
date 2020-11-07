@@ -31,7 +31,8 @@ public class ItemImgTxt extends XItem<Integer> {
 
     @Override
     public XHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new XHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item, parent,false));
+        return new XHolder(LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.recycler_view_item, parent,false));
     }
 
     @Override

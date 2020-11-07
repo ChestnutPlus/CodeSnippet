@@ -1,9 +1,10 @@
 package x.chestnut.code.snippet.ui.recyclerView.xItemPackage.circleScrollRecyclerView;
 
 import android.content.Context;
+import android.util.AttributeSet;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.AttributeSet;
 
 /**
  * <pre>
@@ -37,7 +38,9 @@ public class CircleRecyclerView extends RecyclerView {
     }
 
     public void setDefaultSelected(int totalDataSize, int defaultSelected) {
-        this.defaultSelected = this.defaultSelected + (totalDataSize - this.defaultSelected % totalDataSize) + defaultSelected;
+        this.defaultSelected = this.defaultSelected
+                + (totalDataSize - this.defaultSelected % totalDataSize)
+                + defaultSelected;
     }
 
     @Override

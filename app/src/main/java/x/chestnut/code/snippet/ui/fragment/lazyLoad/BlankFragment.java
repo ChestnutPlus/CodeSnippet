@@ -15,7 +15,7 @@ import x.chestnut.code.snippet.base.BaseFragment;
 public class BlankFragment extends BaseFragment {
 
     /*声明传入的参数*/
-    private String TAG = "BlankFragment";
+    private final String TAG = "BlankFragment";
     private static final String ARG_PARAM1 = "param1";
     private String mParam1;
 
@@ -80,7 +80,7 @@ public class BlankFragment extends BaseFragment {
      */
     private static class MockMetAsyncTask extends AsyncTask<String,Void,String> {
 
-        private WeakReference<BlankFragment> blankFragmentWeakReference;
+        private final WeakReference<BlankFragment> blankFragmentWeakReference;
 
         public MockMetAsyncTask(BlankFragment blankFragment) {
             this.blankFragmentWeakReference = new WeakReference<>(blankFragment);
@@ -89,7 +89,7 @@ public class BlankFragment extends BaseFragment {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                Thread.sleep(1*1000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

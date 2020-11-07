@@ -1,13 +1,13 @@
 package x.chestnut.code.snippet.ui.recyclerView.multiItem;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.ui.recyclerView.scrollImg.ItemScrollImgBean;
 import x.chestnut.code.snippet.ui.recyclerView.scrollImg.ViewHolderScrollImgItem;
@@ -49,19 +49,23 @@ public class MultiItemAdapter extends RecyclerView.Adapter {
         View item;
         switch (viewType) {
             case ITEM_IMG:
-                item = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_img, viewGroup, false);
+                item = LayoutInflater.from(viewGroup.getContext()).inflate(
+                        R.layout.recycler_item_img, viewGroup, false);
                 holder = new ViewHolderItemImg(item);
                 break;
             case ITEM_TV:
-                item = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_txt, viewGroup, false);
+                item = LayoutInflater.from(viewGroup.getContext()).inflate(
+                        R.layout.recycler_item_txt, viewGroup, false);
                 holder = new ViewHolderItemTxt(item);
                 break;
             case ITEM_IMG_TV:
-                item = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_item, viewGroup, false);
+                item = LayoutInflater.from(viewGroup.getContext()).inflate(
+                        R.layout.recycler_view_item, viewGroup, false);
                 holder = new ViewHolderItemImgTxt(item);
                 break;
             case ITEM_Scroll_IMG_TV:
-                item = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item_scroll_img, viewGroup, false);
+                item = LayoutInflater.from(viewGroup.getContext()).inflate(
+                        R.layout.recycler_item_scroll_img, viewGroup, false);
                 holder = new ViewHolderScrollImgItem(item, recyclerView);
                 break;
         }

@@ -24,17 +24,20 @@ public class BackFragmentActivity extends BaseActivity implements BackFragment.O
 
     @Override
     public void lazyLoadViewAfterOnResume() {
-        BaseFragment.startFragment(this,R.id.frame_layout, BackFragment.newInstance(Param1),false);
+        BaseFragment.startFragment(this,R.id.frame_layout,
+                BackFragment.newInstance(Param1),false);
     }
 
     @Override
     public void onClick(String param) {
         switch (param) {
             case Param1:
-                BaseFragment.startFragment(this,R.id.frame_layout, BackFragment.newInstance(Param2));
+                BaseFragment.startFragment(this,
+                        R.id.frame_layout, BackFragment.newInstance(Param2));
                 break;
             case Param2:
-                BaseFragment.startFragment(this,R.id.frame_layout, BackFragment.newInstance(Param3));
+                BaseFragment.startFragment(this,
+                        R.id.frame_layout, BackFragment.newInstance(Param3));
                 break;
             case Param3:
                 break;

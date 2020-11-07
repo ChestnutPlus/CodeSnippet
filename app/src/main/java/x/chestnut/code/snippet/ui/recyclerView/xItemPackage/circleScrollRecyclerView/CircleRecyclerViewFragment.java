@@ -1,13 +1,13 @@
 package x.chestnut.code.snippet.ui.recyclerView.xItemPackage.circleScrollRecyclerView;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.base.XItem;
@@ -42,7 +42,8 @@ public class CircleRecyclerViewFragment extends BaseFragment{
 
     @Override
     protected void onLazyViewCreate(View rootView) {
-        CircleRecyclerView recyclerView = (CircleRecyclerView) rootView.findViewById(R.id.recycler_view);
+        CircleRecyclerView recyclerView = (CircleRecyclerView) rootView
+                .findViewById(R.id.recycler_view);
         recyclerView.setNeedLoop(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);

@@ -1,13 +1,13 @@
 package x.chestnut.code.snippet.ui.recyclerView.itemDecorationStickySection;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.baseUse.BaseUseAdapter;
@@ -59,7 +59,8 @@ public class ItemDecorationStickySectionFragment extends BaseFragment{
             groupInfo.positionInGroup = position % 5;
             return groupInfo;
         };
-        StickySectionItemDecoration sectionItemDecoration = new StickySectionItemDecoration(groupInfoCallback,100,2);
+        StickySectionItemDecoration sectionItemDecoration = new StickySectionItemDecoration(
+                groupInfoCallback,100,2);
         recyclerView.addItemDecoration(sectionItemDecoration);
         recyclerView.setAdapter(baseAdapter);
     }

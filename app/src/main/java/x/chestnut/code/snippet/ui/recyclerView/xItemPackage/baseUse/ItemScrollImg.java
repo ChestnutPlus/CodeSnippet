@@ -1,13 +1,13 @@
 package x.chestnut.code.snippet.ui.recyclerView.xItemPackage.baseUse;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.base.XHolder;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.base.XItem;
@@ -37,8 +37,10 @@ public class ItemScrollImg extends XItem<Integer> {
         @Override
         public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
             // 判断是linearLayoutManager
-            if (imageView.getDrawable()!=null && recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
-                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+            if (imageView.getDrawable()!=null
+                    && recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
+                LinearLayoutManager linearLayoutManager =
+                        (LinearLayoutManager) recyclerView.getLayoutManager();
 
                 /*记录PaddingStart和PaddingEnd的值，后面需要恢复*/
                 int paddingLeft = imageView.getPaddingLeft();
@@ -82,10 +84,13 @@ public class ItemScrollImg extends XItem<Integer> {
                             int scrollImg = realHeight - imageViewHeight;
                             if (view.getY()> maxScrollItemTop)
                                 maxScrollItemTop = (int) view.getY();
-                            if (maxScrollItemTop-scrollYBottomOffset>view.getY() && view.getY()>scrollYTopOffset) {
+                            if (maxScrollItemTop-scrollYBottomOffset>view.getY()
+                                    && view.getY()>scrollYTopOffset) {
                                 //图片移动的距离
-                                int temp = (int) ((view.getY() - scrollYTopOffset) * (scrollImg + paddingTop)
-                                        / (maxScrollItemTop - scrollYBottomOffset - scrollYTopOffset)) - paddingTop;
+                                int temp = (int) ((view.getY() - scrollYTopOffset)
+                                        * (scrollImg + paddingTop)
+                                        / (maxScrollItemTop - scrollYBottomOffset - scrollYTopOffset))
+                                        - paddingTop;
                                 imageView.setPadding(paddingLeft, temp, paddingRight, 0);
                             }
                         }
@@ -102,7 +107,8 @@ public class ItemScrollImg extends XItem<Integer> {
 
     @Override
     public XHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new XHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_scroll_img, parent,false));
+        return new XHolder(LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.recycler_item_scroll_img, parent,false));
     }
 
     @Override

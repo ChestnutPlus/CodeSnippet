@@ -1,12 +1,13 @@
 package x.chestnut.code.snippet.ui.recyclerView.headerFooter;
 
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.collection.SparseArrayCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * <pre>
@@ -167,7 +168,8 @@ public class WrapperHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerVie
         if (isHeaderViewPos(position) || isFooterViewPos(position)) {
             ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
             if (lp instanceof StaggeredGridLayoutManager.LayoutParams) {
-                StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams) lp;
+                StaggeredGridLayoutManager.LayoutParams p =
+                        (StaggeredGridLayoutManager.LayoutParams) lp;
                 //则 占据 所有的 Span
                 p.setFullSpan(true);
             }

@@ -1,14 +1,14 @@
 package x.chestnut.code.snippet.ui.recyclerView.xItemPackage.baseUse;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseFragment;
 import x.chestnut.code.snippet.ui.recyclerView.xItemPackage.base.XItem;
@@ -88,11 +88,13 @@ public class XItemBaseUseFragment extends BaseFragment{
                     beans.add(itemTxt);
                     break;
                 case 2:
-                    ItemImgTxt itemImgTxt = new ItemImgTxt(bgRes[i%bgRes.length],contents[i%contents.length]);
+                    ItemImgTxt itemImgTxt = new ItemImgTxt(bgRes[i%bgRes.length],
+                            contents[i%contents.length]);
                     beans.add(itemImgTxt);
                     break;
                 case 3:
-                    ItemScrollImg itemScrollImg = new ItemScrollImg(longBgRes[i%longBgRes.length], recyclerView);
+                    ItemScrollImg itemScrollImg = new ItemScrollImg(
+                            longBgRes[i%longBgRes.length], recyclerView);
                     beans.add(itemScrollImg);
                     break;
             }

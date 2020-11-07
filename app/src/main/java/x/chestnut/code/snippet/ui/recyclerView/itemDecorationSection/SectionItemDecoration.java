@@ -4,9 +4,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 /**
  * <pre>
@@ -21,12 +22,13 @@ import android.view.View;
  */
 public class SectionItemDecoration extends RecyclerView.ItemDecoration {
 
-    private GroupInfoCallback groupInfoCallback;
-    private int sectionHeight;
-    private int dividerHeight;
-    private Paint mPaint;
+    private final GroupInfoCallback groupInfoCallback;
+    private final int sectionHeight;
+    private final int dividerHeight;
+    private final Paint mPaint;
 
-    public SectionItemDecoration(GroupInfoCallback groupInfoCallback, int sectionHeight, int dividerHeight) {
+    public SectionItemDecoration(GroupInfoCallback groupInfoCallback,
+                                 int sectionHeight, int dividerHeight) {
         this.groupInfoCallback = groupInfoCallback;
         this.sectionHeight = sectionHeight;
         this.dividerHeight = dividerHeight;
@@ -35,7 +37,8 @@ public class SectionItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
+                               @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildAdapterPosition(view);
         if (groupInfoCallback!=null) {
@@ -52,7 +55,8 @@ public class SectionItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+    public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent,
+                       @NonNull RecyclerView.State state) {
         super.onDraw(c, parent, state);
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
