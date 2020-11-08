@@ -35,7 +35,7 @@ public class FragmentExampleFragment extends ScrollBaseFragment{
     }
 
     @Override
-    protected void onViewResume() {
-        setTitle("Fragment示例");
+    protected String getActionBarTitle() {
+        return "Fragment示例";
     }
 }

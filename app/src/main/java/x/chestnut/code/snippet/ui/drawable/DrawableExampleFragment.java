@@ -32,7 +32,7 @@ public class DrawableExampleFragment extends ScrollBaseFragment{
     }
 
     @Override
-    protected void onViewResume() {
-        setTitle("Drawable示例");
+    protected String getActionBarTitle() {
+        return "Drawable示例";
     }
 }

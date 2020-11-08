@@ -40,7 +40,7 @@ public class AsyncTaskExampleFragment extends ScrollBaseFragment {
     }
 
     @Override
-    protected void onViewResume() {
-        setTitle("AsyncTask");
+    protected String getActionBarTitle() {
+        return "AsyncTask";
     }
 }

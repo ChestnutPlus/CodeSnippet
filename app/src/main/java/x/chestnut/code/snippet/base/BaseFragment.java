@@ -3,6 +3,7 @@ package x.chestnut.code.snippet.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,8 @@ public abstract class BaseFragment extends Fragment {
     private boolean isPause = false;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         rootView = inflater.inflate(setContentView(), container, false);
         isIncludeByViewPager = container instanceof ViewPager;
         onViewCreate(rootView);
@@ -116,18 +118,30 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int setContentView();
     protected void onViewCreate(View rootView){}
     protected void onLazyViewCreate(View rootView) {}
-    protected void onViewResume(){}
+    protected void onViewResume(){
+        String title = getActionBarTitle();
+        if (!TextUtils.isEmpty(title)) {
+            setTitle(title);
+        }
+    }
     protected void onViewPause(){}
     protected void onViewDestroy(){}
+    protected String getActionBarTitle() {
+        return null;
+    }
 
-    public static void startFragment(FragmentActivity fragmentActivity, @IdRes int frameLayout, Fragment fragment) {
+    public static void startFragment(FragmentActivity fragmentActivity, @IdRes int frameLayout,
+                                     Fragment fragment) {
         startFragment(fragmentActivity,frameLayout, fragment,true);
     }
 
-    public static void startFragment(FragmentActivity fragmentActivity, @IdRes int frameLayout, Fragment fragment, boolean isAddBackStack) {
+    public static void startFragment(FragmentActivity fragmentActivity,
+                                     @IdRes int frameLayout,
+                                     Fragment fragment, boolean isAddBackStack) {
         /*判断该fragment是否已经被添加过  如果没有被添加  则添加*/
         if (!fragment.isAdded()) {
-            FragmentTransaction fragmentTransaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction = fragmentActivity.getSupportFragmentManager()
+                    .beginTransaction();
             if (isAddBackStack)
                 fragmentTransaction.addToBackStack(null);
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -155,7 +169,7 @@ public abstract class BaseFragment extends Fragment {
         BaseFragment.startFragment(getActivity(), R.id.frame_layout, fragment,isAddToBackStack);
     }
 
-    protected void setTitle(String title) {
+    private void setTitle(String title) {
         if (getActivity() instanceof AppCompatActivity) {
             AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
             ActionBar actionBar = appCompatActivity.getSupportActionBar();

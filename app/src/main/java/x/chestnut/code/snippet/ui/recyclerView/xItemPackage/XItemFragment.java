@@ -40,7 +40,7 @@ public class XItemFragment extends ScrollBaseFragment{
     }
 
     @Override
-    protected void onViewResume() {
-        setTitle("X-Item封装");
+    protected String getActionBarTitle() {
+        return "X-Item封装";
     }
 }

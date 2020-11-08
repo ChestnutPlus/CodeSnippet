@@ -30,7 +30,7 @@ public class OtherExampleFragment extends ScrollBaseFragment {
     }
 
     @Override
-    protected void onViewResume() {
-        setTitle("Other Example");
+    protected String getActionBarTitle() {
+        return "Other Example";
     }
 }

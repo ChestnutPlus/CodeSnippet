@@ -51,7 +51,7 @@ public class RecyclerViewExampleFragment extends ScrollBaseFragment{
     }
 
     @Override
-    protected void onViewResume() {
-        setTitle("RecyclerView示例");
+    protected String getActionBarTitle() {
+        return "RecyclerView示例";
     }
 }

@@ -5,6 +5,7 @@ import android.view.View;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.ScrollBaseFragment;
 import x.chestnut.code.snippet.other.OtherExampleFragment;
+import x.chestnut.code.snippet.ui.countNumberView.CountNumberViewFragment;
 import x.chestnut.code.snippet.ui.drawable.DrawableExampleFragment;
 import x.chestnut.code.snippet.ui.fragment.FragmentExampleFragment;
 import x.chestnut.code.snippet.ui.recyclerView.RecyclerViewExampleFragment;
@@ -35,10 +36,11 @@ public class MainFragment extends ScrollBaseFragment{
         addView("RecyclerView", view -> startFragment(RecyclerViewExampleFragment.newInstance()));
         addView("Drawable", view -> startFragment(DrawableExampleFragment.newInstance()));
         addView("Other Example", view -> startFragment(OtherExampleFragment.newInstance()));
+        addView("CountNumberView", view -> startFragment(CountNumberViewFragment.newInstance()));
     }
 
     @Override
-    protected void onViewResume() {
-        setTitle(getString(R.string.app_name));
+    protected String getActionBarTitle() {
+        return getString(R.string.app_name);
     }
 }
