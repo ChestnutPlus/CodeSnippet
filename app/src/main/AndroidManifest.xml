@@ -6,6 +6,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
+        <meta-data android:value="${NAME}" android:name="NAME"/>
+
         <activity android:name=".ui.fragment.backStack.BackFragmentActivity" />
         <activity android:name=".ui.fragment.bottomTab.BottomTabFragmentActivity" />
         <activity android:name=".ui.fragment.lazyLoad.FragmentLazyLoadActivity" />

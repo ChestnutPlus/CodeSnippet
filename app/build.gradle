@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 apply from: '../version.gradle'
 
+def nameKey = "NAME"
+def nameValueRelease = "\"chestnutRelease\""
+def nameValueDebug = "\"chestnutDebug\""
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -11,7 +15,15 @@ android {
         versionName versions.version_name
     }
     buildTypes {
+        debug {
+            buildConfigField "String", "$nameKey", "$nameValueDebug"
+            buildConfigField "boolean", "IS_DEBUG", "true"
+            manifestPlaceholders.put(nameKey, "Debug")
+        }
         release {
+            buildConfigField "String", "$nameKey", "$nameValueRelease"
+            buildConfigField "boolean", "IS_DEBUG", "false"
+            manifestPlaceholders.put(nameKey, "Release")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
