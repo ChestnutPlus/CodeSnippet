@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import x.chestnut.code.snippet.BuildConfig;
+import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.ScrollBaseFragment;
 import x.chestnut.code.snippet.other.asyncTask.AsyncTaskExampleFragment;
 
@@ -45,6 +46,18 @@ public class OtherExampleFragment extends ScrollBaseFragment {
                 e.printStackTrace();
             }
         });
+        //字符串通配符
+        // 1. %n$ms：代表输出的是字符串，n代表是第几个参数，设置m的值可以在输出之前放置空格
+        // 2. %n$md：代表输出的是整数，n代表是第几个参数，设置m的值可以在输出之前放置空格，也可以设为0m,在输出之前放置m个0
+        // 3. %n$mf：代表输出的是浮点数，n代表是第几个参数，设置m的值可以控制小数位数，如m=2.3时，
+        //           代表的是在输出之前放置2个空格，且小数点后四舍五入保留3位。
+        String userName = "chestnut";
+        int mailCount = 3;
+        addView(getString(R.string.str_1, userName, mailCount), null);
+        addView(getString(R.string.str_2, userName, mailCount), null);
+        addView(getString(R.string.str_3, 312.365f, 50f), null);
+        addView(getString(R.string.str_3, 21212.365f, 50000.128534f), null);
+
     }
 
     @Override
