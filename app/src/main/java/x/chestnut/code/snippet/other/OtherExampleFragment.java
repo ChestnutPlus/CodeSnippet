@@ -4,6 +4,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import x.chestnut.code.snippet.BuildConfig;
 import x.chestnut.code.snippet.R;
@@ -24,6 +25,9 @@ import x.chestnut.code.snippet.other.asyncTask.AsyncTaskExampleFragment;
 public class OtherExampleFragment extends ScrollBaseFragment {
 
     private static final String TAG = OtherExampleFragment.class.getName();
+    private boolean mIsShowAllContent = false;
+    private TextView mTips = null;
+    private TextView mTvContent = null;
 
     public OtherExampleFragment() {}
 
@@ -58,6 +62,20 @@ public class OtherExampleFragment extends ScrollBaseFragment {
         addView(getString(R.string.str_3, 312.365f, 50f), null);
         addView(getString(R.string.str_3, 21212.365f, 50000.128534f), null);
 
+        String showAllStr = "--查看全部--";
+        String showLittleStr = "---收起---";
+        mTips = addView(mIsShowAllContent ? showLittleStr : showAllStr, v -> {
+            if(mIsShowAllContent) {
+                mTvContent.setMaxLines(1);
+                mTips.setText(showAllStr);
+            } else {
+                mTvContent.setMaxLines(200);
+                mTips.setText(showLittleStr);
+            }
+            mIsShowAllContent = !mIsShowAllContent;
+        });
+        mTvContent = addView(R.string.long_text, null);
+        mTvContent.setMaxLines(mIsShowAllContent ? 200 : 1);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
 
+import androidx.annotation.StringRes;
 import androidx.core.content.res.ResourcesCompat;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.utils.ConvertUtils;
@@ -24,7 +25,7 @@ import x.chestnut.code.snippet.utils.ConvertUtils;
 
 public abstract class ScrollBaseFragment extends BaseFragment{
 
-    protected void addView(CharSequence content, View.OnClickListener onClickListener) {
+    protected TextView addView(CharSequence content, View.OnClickListener onClickListener) {
         FlexboxLayout flexboxLayout = (FlexboxLayout) rootView.findViewById(R.id.flx);
         TextView textView = new TextView(rootView.getContext());
         textView.setBackground(ResourcesCompat.getDrawable(getResources(),
@@ -39,10 +40,17 @@ public abstract class ScrollBaseFragment extends BaseFragment{
         FlexboxLayout.LayoutParams layoutParams = (FlexboxLayout.LayoutParams)
                 textView.getLayoutParams();
         layoutParams.setMargins(margin, marginTopBottom, margin, marginTopBottom);
-        textView.setClickable(true);
-        textView.setFocusable(true);
         textView.setTag(content);
-        textView.setOnClickListener(onClickListener);
+        if (onClickListener != null) {
+            textView.setFocusable(true);
+            textView.setClickable(true);
+            textView.setOnClickListener(onClickListener);
+        }
+        return textView;
+    }
+
+    protected TextView addView(@StringRes int strId, View.OnClickListener onClickListener) {
+        return addView(getString(strId), onClickListener);
     }
 
     @Override
