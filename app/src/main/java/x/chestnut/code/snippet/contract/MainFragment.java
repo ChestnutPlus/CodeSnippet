@@ -9,6 +9,7 @@ import x.chestnut.code.snippet.other.OtherExampleFragment;
 import x.chestnut.code.snippet.ui.countNumberView.CountNumberViewFragment;
 import x.chestnut.code.snippet.ui.drawable.DrawableExampleFragment;
 import x.chestnut.code.snippet.ui.fragment.FragmentExampleFragment;
+import x.chestnut.code.snippet.ui.notification.NotificationFragment;
 import x.chestnut.code.snippet.ui.recyclerView.RecyclerViewExampleFragment;
 
 /**
@@ -38,6 +39,7 @@ public class MainFragment extends ScrollBaseFragment{
         addView("Drawable", view -> startFragment(DrawableExampleFragment.newInstance()));
         addView("Other Example", view -> startFragment(OtherExampleFragment.newInstance()));
         addView("CountNumberView", view -> startFragment(CountNumberViewFragment.newInstance()));
+        addView("Notification", view -> startFragment(new NotificationFragment()));
         addView("Kotlin", view -> startFragment(new KotlinSampleFragment()));
     }
 
