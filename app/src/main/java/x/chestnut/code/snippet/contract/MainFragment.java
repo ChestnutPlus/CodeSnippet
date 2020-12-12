@@ -4,6 +4,7 @@ import android.view.View;
 
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.ScrollBaseFragment;
+import x.chestnut.code.snippet.kotlin.KotlinSampleFragment;
 import x.chestnut.code.snippet.other.OtherExampleFragment;
 import x.chestnut.code.snippet.ui.countNumberView.CountNumberViewFragment;
 import x.chestnut.code.snippet.ui.drawable.DrawableExampleFragment;
@@ -37,6 +38,7 @@ public class MainFragment extends ScrollBaseFragment{
         addView("Drawable", view -> startFragment(DrawableExampleFragment.newInstance()));
         addView("Other Example", view -> startFragment(OtherExampleFragment.newInstance()));
         addView("CountNumberView", view -> startFragment(CountNumberViewFragment.newInstance()));
+        addView("Kotlin", view -> startFragment(new KotlinSampleFragment()));
     }
 
     @Override
