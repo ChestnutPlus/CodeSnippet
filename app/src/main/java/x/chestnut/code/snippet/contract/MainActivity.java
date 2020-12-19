@@ -1,9 +1,11 @@
 package x.chestnut.code.snippet.contract;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.BaseActivity;
 import x.chestnut.code.snippet.base.BaseFragment;
 
+@AndroidEntryPoint
 public class MainActivity extends BaseActivity {
 
     @Override

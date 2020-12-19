@@ -4,6 +4,7 @@ import android.view.View;
 
 import x.chestnut.code.snippet.R;
 import x.chestnut.code.snippet.base.ScrollBaseFragment;
+import x.chestnut.code.snippet.jetpack.JetpackSampleFragment;
 import x.chestnut.code.snippet.kotlin.KotlinSampleFragment;
 import x.chestnut.code.snippet.other.OtherExampleFragment;
 import x.chestnut.code.snippet.ui.countNumberView.CountNumberViewFragment;
@@ -41,6 +42,7 @@ public class MainFragment extends ScrollBaseFragment{
         addView("CountNumberView", view -> startFragment(CountNumberViewFragment.newInstance()));
         addView("Notification", view -> startFragment(new NotificationFragment()));
         addView("Kotlin", view -> startFragment(new KotlinSampleFragment()));
+        addView("Jetpack", view -> startFragment(new JetpackSampleFragment()));
     }
 
     @Override
