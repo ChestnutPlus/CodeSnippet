@@ -8,6 +8,7 @@ import android.widget.Toast
 import kotlinx.coroutines.*
 import x.chestnut.code.snippet.base.ScrollBaseFragment
 import x.chestnut.code.snippet.jetpack.hilt.HiltSampleFragment
+import x.chestnut.code.snippet.kotlin.base.KotlinBaseFragment
 import x.chestnut.code.snippet.kotlin.coroutine.KotlinCoroutineFragment
 import x.chestnut.code.snippet.kotlin.flow.KotlinFlowFragment
 import x.chestnut.code.snippet.other.OtherExampleFragment
@@ -27,6 +28,7 @@ class KotlinSampleFragment : ScrollBaseFragment() {
 
     override fun onLazyViewCreate(rootView: View?) {
         super.onLazyViewCreate(rootView)
+        addView("KotlinBase") { startFragment(KotlinBaseFragment()) }
         addView("Coroutine") { startFragment(KotlinCoroutineFragment()) }
         addView("Flow") { startFragment(KotlinFlowFragment()) }
     }
