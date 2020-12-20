@@ -7,6 +7,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import dagger.hilt.android.AndroidEntryPoint;
 
 /**
  * <pre>
@@ -19,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity;
  *     update log:
  * </pre>
  */
-
 public abstract class BaseActivity extends AppCompatActivity{
 
     @Override

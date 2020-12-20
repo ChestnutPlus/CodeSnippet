@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:padding="5dp"
-        android:id="@+id/flx"
-        app:flexDirection="row"
-        app:flexWrap="wrap"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".contract.MainActivity"/>
-</ScrollView>
+        android:layout_height="match_parent">
+        <com.google.android.flexbox.FlexboxLayout
+            android:padding="5dp"
+            android:id="@+id/flx"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".contract.MainActivity"/>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_log"
+        android:visibility="gone"
+        android:scrollbars="horizontal"
+        android:background="#46A8A6A5"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:lines="10"
+        android:maxLines="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

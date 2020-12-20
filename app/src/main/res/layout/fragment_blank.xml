@@ -15,7 +15,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content" />
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/tv_index"
         android:layout_width="wrap_content"
