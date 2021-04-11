@@ -17,7 +17,7 @@ class GroupInfo {
     var groupId = 0
 
     //Header的标题
-    var groupTitle: String? = null
+    var groupTitle: String = ""
 
     //ItemView 在组内的位置
     var positionInGroup = 0
