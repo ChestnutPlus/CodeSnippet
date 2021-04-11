@@ -34,13 +34,12 @@ class HiltSampleFragment : ScrollBaseFragment() {
         const val TAG = "HiltSampleFragment"
     }
 
-    override fun onLazyViewCreate(rootView: View?) {
+    override val actionBarTitle: String
+        get() = "Hilt Sample"
+
+    override fun onLazyViewCreate(rootView: View) {
         super.onLazyViewCreate(rootView)
         addView("TruckSample") { truck.deliver() }
-    }
-
-    override fun getActionBarTitle(): String {
-        return "Hilt Sample"
     }
 }
 

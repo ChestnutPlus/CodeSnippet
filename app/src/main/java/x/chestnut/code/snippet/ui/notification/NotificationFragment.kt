@@ -37,7 +37,7 @@ class NotificationFragment : ScrollBaseFragment() {
         private const val IMPORTANT_CHANNEL_ID = "IMPORTANT_CHANNEL_ID"
     }
 
-    override fun onLazyViewCreate(rootView: View?) {
+    override fun onLazyViewCreate(rootView: View) {
         super.onLazyViewCreate(rootView)
         addView("注册 Channel 到系统") {
             val notificationManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE)

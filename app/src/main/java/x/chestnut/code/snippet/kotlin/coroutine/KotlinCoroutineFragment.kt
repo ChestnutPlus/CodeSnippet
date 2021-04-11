@@ -33,7 +33,7 @@ class KotlinCoroutineFragment : ScrollBaseFragment() {
         job?.cancel()
     }
 
-    override fun onLazyViewCreate(rootView: View?) {
+    override fun onLazyViewCreate(rootView: View) {
         super.onLazyViewCreate(rootView)
         addView("协程 - CoroutineBuilders | launch") {
             //1. 创建一个顶级协程，生命周期结束时候需要主动 cancel，避免内存泄漏

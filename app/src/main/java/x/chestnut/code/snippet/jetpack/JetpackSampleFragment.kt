@@ -17,12 +17,11 @@ import x.chestnut.code.snippet.jetpack.hilt.HiltSampleFragment
  */
 class JetpackSampleFragment : ScrollBaseFragment() {
 
-    override fun onLazyViewCreate(rootView: View?) {
+    override val actionBarTitle: String?
+        get() = "JetpackSample"
+
+    override fun onLazyViewCreate(rootView: View) {
         super.onLazyViewCreate(rootView)
         addView("Hilt") { startFragment(HiltSampleFragment()) }
-    }
-
-    override fun getActionBarTitle(): String {
-        return "JetpackSample"
     }
 }

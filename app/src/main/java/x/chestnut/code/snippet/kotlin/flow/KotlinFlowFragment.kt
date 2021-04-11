@@ -32,7 +32,7 @@ class KotlinFlowFragment : CoroutineBaseFragment() {
 
     private var start: Long = 0
 
-    override fun onLazyViewCreate(rootView: View?) {
+    override fun onLazyViewCreate(rootView: View) {
         super.onLazyViewCreate(rootView)
         addView("flow") {
             mainScope.launch {

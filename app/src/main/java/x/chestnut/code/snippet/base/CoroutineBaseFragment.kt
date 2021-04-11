@@ -42,9 +42,9 @@ open class CoroutineBaseFragment : ScrollBaseFragment() {
     lateinit var logger: ViewLogger
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        tvLog = view?.findViewById(R.id.tv_log)
+        tvLog = view.findViewById(R.id.tv_log)
         initTvLog(tvLog)
         return view
     }

@@ -26,7 +26,7 @@ import x.chestnut.code.snippet.other.OtherExampleFragment
  */
 class KotlinSampleFragment : ScrollBaseFragment() {
 
-    override fun onLazyViewCreate(rootView: View?) {
+    override fun onLazyViewCreate(rootView: View) {
         super.onLazyViewCreate(rootView)
         addView("KotlinBase") { startFragment(KotlinBaseFragment()) }
         addView("Coroutine") { startFragment(KotlinCoroutineFragment()) }
