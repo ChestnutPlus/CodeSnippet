@@ -13,10 +13,10 @@
         <activity android:name=".ui.fragment.backStack.BackFragmentActivity" />
         <activity android:name=".ui.fragment.bottomTab.BottomTabFragmentActivity" />
         <activity android:name=".ui.fragment.lazyLoad.FragmentLazyLoadActivity" />
-        <activity android:name=".contract.MainActivity">
+        <activity android:name=".contract.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
