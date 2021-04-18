@@ -6,6 +6,7 @@ import x.chestnut.code.snippet.anim.carSign.CarAdvancedSignFragment
 import x.chestnut.code.snippet.anim.carSign.CarSignFragment
 import x.chestnut.code.snippet.anim.carView.CarMarketFragment
 import x.chestnut.code.snippet.anim.countNumberView.CountNumberViewFragment
+import x.chestnut.code.snippet.anim.voiceAnim.VoiceAnimFragment
 import x.chestnut.code.snippet.base.ScrollBaseFragment
 
 /**
@@ -29,5 +30,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("CarSign") { startFragment(CarSignFragment()) }
         addView("CarAdvancedSign") { startFragment(CarAdvancedSignFragment()) }
         addView("车厢扭曲动画") { startFragment(CarMarketFragment()) }
+        addView("波普动画") { startFragment(VoiceAnimFragment()) }
     }
 }

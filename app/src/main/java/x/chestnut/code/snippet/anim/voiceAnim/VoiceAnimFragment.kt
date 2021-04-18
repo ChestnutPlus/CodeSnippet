@@ -1,4 +1,4 @@
-package x.chestnut.code.snippet.anim.carView
+package x.chestnut.code.snippet.anim.voiceAnim
 
 import x.chestnut.code.snippet.anim.AnimDisplayConfig
 import x.chestnut.code.snippet.anim.AnimDisplayFragment
@@ -14,7 +14,7 @@ import x.chestnut.code.snippet.anim.AnimDisplayFragment
  *     update log:
  * </pre>
  */
-class CarMarketFragment : AnimDisplayFragment<CarMarketView>() {
+class VoiceAnimFragment : AnimDisplayFragment<VoiceAnimView>() {
 
     override fun getConfig(): AnimDisplayConfig {
         val config = super.getConfig()
@@ -24,27 +24,29 @@ class CarMarketFragment : AnimDisplayFragment<CarMarketView>() {
         return config
     }
 
-    override fun getDiyViewClass(): Class<CarMarketView> {
-        return CarMarketView::class.java
+    override fun getDiyViewClass(): Class<VoiceAnimView> {
+        return VoiceAnimView::class.java
     }
 
-    override fun setProgress(view: CarMarketView, progress: Int) {}
+    override fun setProgress(view: VoiceAnimView, progress: Int) {}
 
-    override fun getProgress(view: CarMarketView): Int {
+    override fun getProgress(view: VoiceAnimView): Int {
         return 0
     }
 
-    override fun onPlayAnim(view: CarMarketView) {
+    override fun onPlayAnim(view: VoiceAnimView) {
         view.playAnim()
     }
 
-    override fun onPauseAnim(view: CarMarketView) {
+    override fun onPauseAnim(view: VoiceAnimView) {
         view.pauseAnim()
     }
 
-    override fun onStopAnim(view: CarMarketView) {}
+    override fun onStopAnim(view: VoiceAnimView) {
+        view.stopAnim()
+    }
 
-    override fun onRelease(view: CarMarketView) {
+    override fun onRelease(view: VoiceAnimView) {
         view.stopAnim()
     }
 }
