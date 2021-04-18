@@ -7,6 +7,7 @@ import x.chestnut.code.snippet.ui.drawable.DrawableExampleFragment
 import x.chestnut.code.snippet.ui.fragment.FragmentExampleFragment
 import x.chestnut.code.snippet.ui.notification.NotificationFragment
 import x.chestnut.code.snippet.ui.recyclerView.RecyclerViewExampleFragment
+import x.chestnut.code.snippet.ui.textView.TextViewFragment
 
 /**
  * <pre>
@@ -30,5 +31,6 @@ class UIFragment : ScrollBaseFragment() {
         addView("RecyclerView") { startFragment(RecyclerViewExampleFragment()) }
         addView("Drawable") { startFragment(DrawableExampleFragment()) }
         addView("Notification") { startFragment(NotificationFragment()) }
+        addView("TextView") { startFragment(TextViewFragment()) }
     }
 }
