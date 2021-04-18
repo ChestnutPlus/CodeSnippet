@@ -7,6 +7,7 @@ import x.chestnut.code.snippet.anim.carSign.CarSignFragment
 import x.chestnut.code.snippet.anim.carView.CarMarketFragment
 import x.chestnut.code.snippet.anim.countNumberView.CountNumberViewFragment
 import x.chestnut.code.snippet.anim.leafLoadingAnim.LeafLoadingViewFragment
+import x.chestnut.code.snippet.anim.lottie.LottieShowFragment
 import x.chestnut.code.snippet.anim.voiceAnim.VoiceAnimFragment
 import x.chestnut.code.snippet.anim.voiceAnimLottie.VoiceAnimLottieFragment
 import x.chestnut.code.snippet.base.ScrollBaseFragment
@@ -35,5 +36,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("波普动画") { startFragment(VoiceAnimFragment()) }
         addView("波普动画-Lottie") { startFragment(VoiceAnimLottieFragment()) }
         addView("叶子 loading 动画") { startFragment(LeafLoadingViewFragment()) }
+        addView("Lottie Show") { startFragment(LottieShowFragment()) }
     }
 }
