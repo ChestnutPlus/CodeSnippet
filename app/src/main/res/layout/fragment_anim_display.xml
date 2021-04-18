@@ -19,21 +19,21 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/svg_play"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginStart="10dp"
         android:layout_gravity="bottom"
         android:padding="10dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp" />
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
     <com.zhouyou.view.seekbar.SignSeekBar
         android:id="@+id/sign_seek_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="22dp"
         android:layout_marginStart="60dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="38dp"
         app:ssb_max="100"
         app:ssb_min="0"
         app:ssb_progress="0"

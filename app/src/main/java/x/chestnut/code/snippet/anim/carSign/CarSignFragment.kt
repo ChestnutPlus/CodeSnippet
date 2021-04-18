@@ -18,16 +18,20 @@ class CarSignFragment : AnimDisplayFragment<CarSignView>() {
     override val actionBarTitle: String
         get() = "CarSign"
 
+    override fun initDiyView(view: CarSignView) {
+        view.setSignStr("栗子家")
+    }
+
     override fun getDiyViewClass(): Class<CarSignView> {
         return CarSignView::class.java
     }
 
-    override fun setFactor(view: CarSignView, factor: Int) {
-        view.setFactoryByUser(factor.toFloat())
+    override fun setProgress(view: CarSignView, progress: Int) {
+        view.setProgressByUser(progress.toFloat())
     }
 
-    override fun getFactor(view: CarSignView): Int {
-        return view.getFactor().toInt()
+    override fun getProgress(view: CarSignView): Int {
+        return view.getProgress().toInt()
     }
 
     override fun onPlayAnim(view: CarSignView) {

@@ -37,10 +37,12 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
     private var mSeekBar: SignSeekBar? = null
     private var mDiyView: T? = null
     private var mPause = true
+    private var mIsChangeScreen = false
 
+    protected open fun initDiyView(view: T) {}
     abstract fun getDiyViewClass(): Class<T>
-    abstract fun setFactor(view: T, factor: Int)
-    abstract fun getFactor(view: T): Int
+    abstract fun setProgress(view: T, progress: Int)
+    abstract fun getProgress(view: T): Int
     abstract fun onPlayAnim(view: T)
     abstract fun onPauseAnim(view: T)
     abstract fun onStopAnim(view: T)
@@ -87,7 +89,7 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
                                                progressFloat: Float, fromUser: Boolean) {
                     if (fromUser) {
                         mDiyView?.let { diyView ->
-                            setFactor(diyView, progress)
+                            setProgress(diyView, progress)
                         }
                     }
                 }
@@ -113,13 +115,14 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
         layoutParams.gravity = Gravity.CENTER
         diyView.layoutParams = layoutParams
         frameLayout.addView(diyView, 0)
+        initDiyView(diyView)
         mDiyView = diyView
 
         //4. init configs
-        val isChange = ScreenUtils.setScreenOrientation(activity, mAnimConfig.isLandscape)
+        mIsChangeScreen = ScreenUtils.setScreenOrientation(activity, mAnimConfig.isLandscape)
         if (mAnimConfig.isAutoPlayAnim) {
             Looper.myQueue().addIdleHandler {
-                val delayTime = if(isChange) 1000L else 300L
+                val delayTime = if(mIsChangeScreen) 1000L else 300L
                 mHandler.postDelayed(Runnable {
                     updatePlayAnimUI()
                     onPlayAnim(mDiyView!!)
@@ -130,6 +133,13 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
         return view
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (mIsChangeScreen) {
+            ScreenUtils.setScreenOrientation(activity, !mAnimConfig.isLandscape)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         stopRefreshProgress()
@@ -138,7 +148,7 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
     private val mHandler = Handler()
     private val mRefreshProgress = java.lang.Runnable {
         mSeekBar?.let { seekBar ->
-            val progress = getFactor(mDiyView!!)
+            val progress = getProgress(mDiyView!!)
             if (progress >= seekBar.max) {
                 updatePauseAnimUI()
             }

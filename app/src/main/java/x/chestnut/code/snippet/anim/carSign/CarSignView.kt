@@ -59,15 +59,15 @@ open class CarSignView : View {
 
         // bTrunk
         //横向位移，bTrunk width/2
-        val xOffset: Float = ViewUtils.factorMapping(factor, FACTOR_START, FACTOR_END,
+        val xOffset: Float = ViewUtils.factorMapping(progress, PROGRESS_START, PROGRESS_END,
                 0F, (bTrunk.width / 2).toFloat())
 
         //纵向位移，( rectFSign.bottom - 35 , 5 , 120 )
-        var yOffset: Float = ViewUtils.factorMapping(factor, FACTOR_START, FACTOR_END,
+        var yOffset: Float = ViewUtils.factorMapping(progress, PROGRESS_START, PROGRESS_END,
                 rectFSign.bottom - 35, 5F, 120F)
 
         //旋转，21° - 0°，逆时针
-        var rotationOffset: Float = ViewUtils.factorMapping(factor, FACTOR_START, FACTOR_END,
+        var rotationOffset: Float = ViewUtils.factorMapping(progress, PROGRESS_START, PROGRESS_END,
                 21F, 0F)
         myMatrix.reset()
         ViewUtils.applySelfRotationToMatrix(bTrunk, rotationOffset,
@@ -76,11 +76,11 @@ open class CarSignView : View {
 
         // bCover
         //旋转，-10° - 0°，逆时针
-        rotationOffset = ViewUtils.factorMapping(factor, FACTOR_START, FACTOR_END,
+        rotationOffset = ViewUtils.factorMapping(progress, PROGRESS_START, PROGRESS_END,
                 -10F, 0F)
 
         //纵向位移，( rectFSign.bottom , 80 , 108 )
-        yOffset = ViewUtils.factorMapping(factor, FACTOR_START, FACTOR_END, rectFSign.bottom,
+        yOffset = ViewUtils.factorMapping(progress, PROGRESS_START, PROGRESS_END, rectFSign.bottom,
                 80F, 108F)
         myMatrix.reset()
         ViewUtils.applySelfRotationToMatrix(bCover, rotationOffset,
@@ -127,21 +127,21 @@ open class CarSignView : View {
 
     /*动画参数*/
     private var objectAnimator: ObjectAnimator? = null
-    private val FACTOR_END = 100f
-    private val FACTOR_START = 0f
-    private var factor = FACTOR_START
+    private val PROGRESS_END = 100f
+    private val PROGRESS_START = 0f
+    private var progress = PROGRESS_START
 
     fun playAnim() {
-        if (factor == 100f) {
-            factor = 0f
+        if (progress == 100f) {
+            progress = 0f
             objectAnimator = null
         }
         if (objectAnimator != null) {
             objectAnimator?.resume()
         } else {
-            objectAnimator = ObjectAnimator.ofFloat(this, "factor",
-                    factor, FACTOR_END)
-            val time = ViewUtils.factorMapping(factor, FACTOR_START, FACTOR_END,
+            objectAnimator = ObjectAnimator.ofFloat(this, "progress",
+                    progress, PROGRESS_END)
+            val time = ViewUtils.factorMapping(progress, PROGRESS_START, PROGRESS_END,
                     3000F, 0F)
             objectAnimator?.duration = time.toLong()
             objectAnimator?.interpolator = AccelerateDecelerateInterpolator()
@@ -157,23 +157,23 @@ open class CarSignView : View {
     fun stopAnim() {
         objectAnimator?.pause()
         objectAnimator?.cancel()
-        factor = 0f
+        progress = 0f
         this.invalidate()
         objectAnimator = null
     }
 
-    fun setFactor(diyFactory: Float) {
-        this.factor = diyFactory
+    fun setProgress(progress: Float) {
+        this.progress = progress
         invalidate()
     }
 
-    fun setFactoryByUser(diyFactory: Float) {
-        this.factor = diyFactory
+    fun setProgressByUser(progress: Float) {
+        this.progress = progress
         invalidate()
         objectAnimator = null
     }
 
-    fun getFactor(): Float {
-        return factor
+    fun getProgress(): Float {
+        return progress
     }
 }
