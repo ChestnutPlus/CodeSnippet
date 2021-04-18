@@ -13,9 +13,11 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.zhouyou.view.seekbar.SignSeekBar
 import x.chestnut.code.snippet.R
 import x.chestnut.code.snippet.base.BaseFragment
+import x.chestnut.code.snippet.utils.BarUtils
 import x.chestnut.code.snippet.utils.ScreenUtils
 import java.lang.reflect.Constructor
 
@@ -38,6 +40,8 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
     private var mDiyView: T? = null
     private var mPause = true
     private var mIsChangeScreen = false
+    private var mIsChangeStatusBarState = false
+    private var mIsChangeActionsBarState = false
 
     protected open fun initDiyView(view: T) {}
     abstract fun getDiyViewClass(): Class<T>
@@ -46,6 +50,7 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
     abstract fun onPlayAnim(view: T)
     abstract fun onPauseAnim(view: T)
     abstract fun onStopAnim(view: T)
+    abstract fun onRelease(view: T)
 
     protected open fun getConfig(): AnimDisplayConfig {
         return mAnimConfig
@@ -130,14 +135,65 @@ abstract class AnimDisplayFragment<T : View> : BaseFragment() {
                 false
             }
         }
+        activity?.let {
+            val barExist = BarUtils.isStatusBarExists(it)
+            if (barExist != mAnimConfig.isShowStatusBar) {
+                mIsChangeStatusBarState = true
+                if (mAnimConfig.isShowStatusBar) {
+                    BarUtils.showStatusBar(it)
+                } else {
+                    BarUtils.hideStatusBar(it)
+                }
+            }
+            val appCompatActivity = it as? AppCompatActivity
+            val actionBar = appCompatActivity?.supportActionBar
+            if (actionBar != null) {
+                if (actionBar.isShowing != mAnimConfig.isShowActionBar) {
+                    mIsChangeActionsBarState = true
+                    if (mAnimConfig.isShowActionBar) {
+                        actionBar.show()
+                    } else {
+                        actionBar.hide()
+                    }
+                }
+            }
+        }
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+        updatePauseAnimUI()
+        onPauseAnim(mDiyView!!)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        //restore configs
         if (mIsChangeScreen) {
             ScreenUtils.setScreenOrientation(activity, !mAnimConfig.isLandscape)
         }
+        activity?.let {
+            if (mIsChangeActionsBarState) {
+                val appCompatActivity = it as? AppCompatActivity
+                val actionBar = appCompatActivity?.supportActionBar
+                if (actionBar != null) {
+                    if (!mAnimConfig.isShowActionBar) {
+                        actionBar.show()
+                    } else {
+                        actionBar.hide()
+                    }
+                }
+            }
+            if (mIsChangeStatusBarState) {
+                if (!mAnimConfig.isShowStatusBar) {
+                    BarUtils.showStatusBar(it)
+                } else {
+                    BarUtils.hideStatusBar(it)
+                }
+            }
+        }
+        onRelease(mDiyView!!)
     }
 
     override fun onDestroy() {

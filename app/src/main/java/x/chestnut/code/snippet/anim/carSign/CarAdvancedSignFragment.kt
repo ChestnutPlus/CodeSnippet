@@ -15,9 +15,6 @@ import x.chestnut.code.snippet.anim.AnimDisplayFragment
  */
 class CarAdvancedSignFragment : AnimDisplayFragment<CarAdvancedSignView>() {
 
-    override val actionBarTitle: String
-        get() = "CarAdvancedSign"
-
     override fun initDiyView(view: CarAdvancedSignView) {
         view.setSignStr("栗子家")
     }
@@ -44,5 +41,9 @@ class CarAdvancedSignFragment : AnimDisplayFragment<CarAdvancedSignView>() {
 
     override fun onStopAnim(view: CarAdvancedSignView) {
         view.stopAnim()
+    }
+
+    override fun onRelease(view: CarAdvancedSignView) {
+        view.release()
     }
 }

@@ -14,6 +14,8 @@ import android.widget.FrameLayout
  * </pre>
  */
 data class AnimDisplayConfig(
+        var isShowActionBar: Boolean = false,
+        var isShowStatusBar: Boolean = true,
         var isAutoPlayAnim: Boolean = true,
         var isLandscape: Boolean = true,
         var isShowSeekBar: Boolean = true,

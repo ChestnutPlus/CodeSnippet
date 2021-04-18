@@ -4,6 +4,7 @@ import android.view.View
 import x.chestnut.code.snippet.R
 import x.chestnut.code.snippet.anim.carSign.CarAdvancedSignFragment
 import x.chestnut.code.snippet.anim.carSign.CarSignFragment
+import x.chestnut.code.snippet.anim.carView.CarMarketFragment
 import x.chestnut.code.snippet.anim.countNumberView.CountNumberViewFragment
 import x.chestnut.code.snippet.base.ScrollBaseFragment
 
@@ -27,5 +28,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("CountNumberView") { startFragment(CountNumberViewFragment()) }
         addView("CarSign") { startFragment(CarSignFragment()) }
         addView("CarAdvancedSign") { startFragment(CarAdvancedSignFragment()) }
+        addView("车厢扭曲动画") { startFragment(CarMarketFragment()) }
     }
 }

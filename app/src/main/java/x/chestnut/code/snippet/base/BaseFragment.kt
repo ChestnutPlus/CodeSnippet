@@ -140,7 +140,7 @@ abstract class BaseFragment : Fragment() {
 
     private fun setTitle(title: String?) {
         if (activity is AppCompatActivity) {
-            val appCompatActivity = activity as AppCompatActivity?
+            val appCompatActivity = activity as? AppCompatActivity
             val actionBar = appCompatActivity?.supportActionBar
             if (actionBar != null) {
                 actionBar.title = title
