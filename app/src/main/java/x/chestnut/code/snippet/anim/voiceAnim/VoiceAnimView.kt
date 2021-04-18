@@ -23,7 +23,7 @@ import x.chestnut.code.snippet.R
 class VoiceAnimView : View {
 
     private var bgBitmap: Bitmap? = null
-    private var paint: Paint? = null
+    private var paint: Paint = Paint()
     private val pointWidth = 6
     private var points: Array<VoiceAnimPoint?> = arrayOfNulls(5)
     private var pointIndex = 0
@@ -39,12 +39,11 @@ class VoiceAnimView : View {
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
         bgBitmap = (resources.getDrawable(R.drawable.ai_chat_icon) as BitmapDrawable).bitmap
-        paint = Paint()
-        paint!!.isAntiAlias = true
-        paint!!.color = -0x3d1c87
-        paint!!.style = Paint.Style.FILL
-        paint!!.strokeWidth = pointWidth.toFloat()
-        paint!!.strokeCap = Paint.Cap.ROUND
+        paint.isAntiAlias = true
+        paint.color = -0x3d1c87
+        paint.style = Paint.Style.FILL
+        paint.strokeWidth = pointWidth.toFloat()
+        paint.strokeCap = Paint.Cap.ROUND
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -57,25 +56,28 @@ class VoiceAnimView : View {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        setMeasuredDimension(bgBitmap!!.width, bgBitmap!!.height)
+        bgBitmap?.let {
+            setMeasuredDimension(it.width, it.height)
+        }
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.drawBitmap(bgBitmap!!, (width / 2 - bgBitmap!!.width / 2).toFloat(), (height / 2 - bgBitmap!!.height / 2).toFloat(), paint)
+        bgBitmap?.let {
+            canvas.drawBitmap(it, (width / 2 - it.width / 2).toFloat(), (height / 2 - it.height / 2).toFloat(), paint)
+        }
         for (i in points.indices) {
-            val point = points[i]
-            val y = indexChangeFunc(pointIndex - i * 2)
-            when (y) {
-                0 -> canvas.drawLine(point!!.centerX.toFloat(), point.centerY.toFloat(), point.centerX.toFloat(), point.centerY + 0.01f, paint!!)
-                2 -> canvas.drawLine(point!!.centerX.toFloat(), point.centerY - point.halfHeight / 2 + pointWidth / 2,
-                        point.centerX.toFloat(), point.centerY + point.halfHeight / 2 - pointWidth / 2, paint!!)
-                4 -> canvas.drawLine(point!!.centerX.toFloat(), point.centerY - point.maxHeight / 2 + pointWidth / 2,
-                        point.centerX.toFloat(), point.centerY + point.maxHeight / 2 - pointWidth / 2, paint!!)
-                1 -> canvas.drawLine(point!!.centerX.toFloat(), point.centerY - point.oneHeight / 2 + pointWidth / 2,
-                        point.centerX.toFloat(), point.centerY + point.oneHeight / 2 - pointWidth / 2, paint!!)
-                3 -> canvas.drawLine(point!!.centerX.toFloat(), point.centerY - point.threeHeight / 2 + pointWidth / 2,
-                        point.centerX.toFloat(), point.centerY + point.threeHeight / 2 - pointWidth / 2, paint!!)
+            val point = points[i] ?: continue
+            when (indexChangeFunc(pointIndex - i * 2)) {
+                0 -> canvas.drawLine(point.centerX.toFloat(), point.centerY.toFloat(), point.centerX.toFloat(), point.centerY + 0.01f, paint)
+                2 -> canvas.drawLine(point.centerX.toFloat(), point.centerY - point.halfHeight / 2 + pointWidth / 2,
+                        point.centerX.toFloat(), point.centerY + point.halfHeight / 2 - pointWidth / 2, paint)
+                4 -> canvas.drawLine(point.centerX.toFloat(), point.centerY - point.maxHeight / 2 + pointWidth / 2,
+                        point.centerX.toFloat(), point.centerY + point.maxHeight / 2 - pointWidth / 2, paint)
+                1 -> canvas.drawLine(point.centerX.toFloat(), point.centerY - point.oneHeight / 2 + pointWidth / 2,
+                        point.centerX.toFloat(), point.centerY + point.oneHeight / 2 - pointWidth / 2, paint)
+                3 -> canvas.drawLine(point.centerX.toFloat(), point.centerY - point.threeHeight / 2 + pointWidth / 2,
+                        point.centerX.toFloat(), point.centerY + point.threeHeight / 2 - pointWidth / 2, paint)
             }
         }
         if (!isRevert) {
@@ -127,5 +129,5 @@ class VoiceAnimView : View {
     }
 
     private class VoiceAnimPoint(var centerX: Int, var centerY: Int, var maxHeight: Float,
-                         var threeHeight: Float, var halfHeight: Float, var oneHeight: Float)
+                                 var threeHeight: Float, var halfHeight: Float, var oneHeight: Float)
 }

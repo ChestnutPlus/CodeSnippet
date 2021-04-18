@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray">
+
+    <x.chestnut.code.snippet.anim.leafLoadingAnim.LeafLoadingView
+        android:id="@+id/leaf"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="200px" />
+
+    <!--进度条设置-->
+    <TextView
+        android:id="@+id/tv_progress"
+        android:textColor="#000"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:text="progress：0"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+    <SeekBar
+        android:id="@+id/seek_bar_progress"
+        android:layout_alignTop="@id/tv_progress"
+        android:layout_toEndOf="@id/tv_progress"
+        android:max="100"
+        android:progress="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--Fam bg margin设置-->
+    <TextView
+        android:id="@+id/tv_fan_bg_margin"
+        android:textColor="#000"
+        android:layout_above="@id/tv_progress"
+        android:layout_margin="10dp"
+        android:text="fan-bg-margin：25"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <SeekBar
+        android:id="@+id/seek_bar_fan_bg_margin"
+        android:layout_alignTop="@id/tv_fan_bg_margin"
+        android:layout_toEndOf="@id/tv_fan_bg_margin"
+        android:max="100"
+        android:progress="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--Fam speed-->
+    <TextView
+        android:id="@+id/tv_fan_speed"
+        android:textColor="#000"
+        android:layout_above="@id/tv_fan_bg_margin"
+        android:layout_margin="10dp"
+        android:text="fan-speed：0"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <SeekBar
+        android:id="@+id/seek_bar_fan_speed"
+        android:layout_alignTop="@id/tv_fan_speed"
+        android:layout_toEndOf="@id/tv_fan_speed"
+        android:max="4"
+        android:progress="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--Leaf size-->
+    <TextView
+        android:id="@+id/tv_leaf_size"
+        android:textColor="#000"
+        android:layout_above="@id/tv_fan_speed"
+        android:layout_margin="10dp"
+        android:text="leaf-size：6"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+    <SeekBar
+        android:id="@+id/seek_bar_leaf_size"
+        android:layout_alignTop="@id/tv_leaf_size"
+        android:layout_toEndOf="@id/tv_leaf_size"
+        android:max="20"
+        android:progress="6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
