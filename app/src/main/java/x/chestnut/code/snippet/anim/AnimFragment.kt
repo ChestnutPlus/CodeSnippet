@@ -2,6 +2,7 @@ package x.chestnut.code.snippet.anim
 
 import android.view.View
 import x.chestnut.code.snippet.R
+import x.chestnut.code.snippet.anim.carSign.CarAdvancedSignFragment
 import x.chestnut.code.snippet.anim.carSign.CarSignFragment
 import x.chestnut.code.snippet.anim.countNumberView.CountNumberViewFragment
 import x.chestnut.code.snippet.base.ScrollBaseFragment
@@ -25,5 +26,6 @@ class AnimFragment : ScrollBaseFragment() {
     override fun onViewCreate(rootView: View) {
         addView("CountNumberView") { startFragment(CountNumberViewFragment()) }
         addView("CarSign") { startFragment(CarSignFragment()) }
+        addView("CarAdvancedSign") { startFragment(CarAdvancedSignFragment()) }
     }
 }
