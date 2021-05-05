@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WheelView">
+        <attr name="offset_top" format="integer"/>
+        <attr name="offset_bottom" format="integer"/>
+        <attr name="item_tv_select_color" format="color"/>
+        <attr name="item_tv_not_select_color" format="color"/>
+        <attr name="item_tv_padding" format="dimension"/>
+        <attr name="item_tv_size" format="dimension"/>
+        <attr name="item_height" format="dimension" />
+    </declare-styleable>
+</resources>

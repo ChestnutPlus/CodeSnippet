@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_select"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+    <x.chestnut.code.snippet.widget.wheelView.WheelView
+        android:background="#eee"
+        android:id="@+id/wheel_view"
+        app:offset_top="2"
+        app:offset_bottom="3"
+        app:item_tv_select_color="#000"
+        app:item_tv_padding="10dp"
+        app:item_tv_size="12sp"
+        android:layout_centerInParent="true"
+        android:layout_width="150dp"
+        android:layout_height="217dp"/>
+</RelativeLayout>
