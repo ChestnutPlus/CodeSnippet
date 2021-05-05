@@ -4,6 +4,7 @@ import android.view.View
 import x.chestnut.code.snippet.R
 import x.chestnut.code.snippet.base.ScrollBaseFragment
 import x.chestnut.code.snippet.widget.pieView.PieViewFragment
+import x.chestnut.code.snippet.widget.radarView.RadarViewFragment
 
 /**
  * <pre>
@@ -23,5 +24,6 @@ class WidgetDisplayFragment : ScrollBaseFragment() {
 
     override fun onViewCreate(rootView: View) {
         addView("饼图") { startFragment(PieViewFragment()) }
+        addView("雷达图") { startFragment(RadarViewFragment()) }
     }
 }

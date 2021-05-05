@@ -38,7 +38,7 @@ class PieViewFragment : ScrollBaseFragment() {
         val layoutParams: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(
                 400, 400)
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
-        pieView.setLayoutParams(layoutParams)
+        pieView.layoutParams = layoutParams
         layout.addView(pieView, 0)
     }
 }
