@@ -10,6 +10,7 @@ import x.chestnut.code.snippet.anim.leafLoadingAnim.LeafLoadingViewFragment
 import x.chestnut.code.snippet.anim.lottie.LottieShowFragment
 import x.chestnut.code.snippet.anim.voiceAnim.VoiceAnimFragment
 import x.chestnut.code.snippet.anim.voiceAnimLottie.VoiceAnimLottieFragment
+import x.chestnut.code.snippet.anim.voiceDbChangeView.VoiceDbChangeViewFragment
 import x.chestnut.code.snippet.base.ScrollBaseFragment
 
 /**
@@ -37,5 +38,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("波普动画-Lottie") { startFragment(VoiceAnimLottieFragment()) }
         addView("叶子 loading 动画") { startFragment(LeafLoadingViewFragment()) }
         addView("Lottie Show") { startFragment(LottieShowFragment()) }
+        addView("语音变化View") { startFragment(VoiceDbChangeViewFragment()) }
     }
 }
