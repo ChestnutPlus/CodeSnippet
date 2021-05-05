@@ -1,14 +1,14 @@
 package x.chestnut.code.snippet.contract
 
 import android.view.View
-import x.chestnut.code.snippet.base.ScrollBaseFragment
-import x.chestnut.code.snippet.other.OtherExampleFragment
-import x.chestnut.code.snippet.ui.notification.NotificationFragment
-import x.chestnut.code.snippet.kotlin.KotlinSampleFragment
-import x.chestnut.code.snippet.jetpack.JetpackSampleFragment
 import x.chestnut.code.snippet.R
 import x.chestnut.code.snippet.anim.AnimFragment
+import x.chestnut.code.snippet.base.ScrollBaseFragment
+import x.chestnut.code.snippet.jetpack.JetpackSampleFragment
+import x.chestnut.code.snippet.kotlin.KotlinSampleFragment
+import x.chestnut.code.snippet.other.OtherExampleFragment
 import x.chestnut.code.snippet.ui.UIFragment
+import x.chestnut.code.snippet.widget.WidgetDisplayFragment
 
 /**
  * <pre>
@@ -32,5 +32,6 @@ class MainFragment : ScrollBaseFragment() {
         addView("Other Example") { startFragment(OtherExampleFragment()) }
         addView(R.string.title_ui) { startFragment(UIFragment()) }
         addView(R.string.title_anim) { startFragment(AnimFragment()) }
+        addView(R.string.title_widget) { startFragment(WidgetDisplayFragment()) }
     }
 }

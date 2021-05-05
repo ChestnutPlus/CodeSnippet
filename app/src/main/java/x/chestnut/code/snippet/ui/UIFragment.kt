@@ -25,7 +25,7 @@ class UIFragment : ScrollBaseFragment() {
     override val actionBarTitleId: Int
         get() = R.string.title_ui
 
-    override fun onViewCreate(rootView: View) {
+    override fun onLazyViewCreate(rootView: View) {
         super.onViewCreate(rootView)
         addView("Fragment") { startFragment(FragmentExampleFragment()) }
         addView("RecyclerView") { startFragment(RecyclerViewExampleFragment()) }

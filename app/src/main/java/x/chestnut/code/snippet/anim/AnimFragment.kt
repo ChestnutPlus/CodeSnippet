@@ -28,7 +28,7 @@ class AnimFragment : ScrollBaseFragment() {
     override val actionBarTitleId: Int
         get() = R.string.title_anim
 
-    override fun onViewCreate(rootView: View) {
+    override fun onLazyViewCreate(rootView: View) {
         addView("CountNumberView") { startFragment(CountNumberViewFragment()) }
         addView("CarSign") { startFragment(CarSignFragment()) }
         addView("CarAdvancedSign") { startFragment(CarAdvancedSignFragment()) }
