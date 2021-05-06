@@ -121,6 +121,68 @@ object ViewUtils {
     }
 
     /**
+     * 因子映射
+     * @param currentFactor 原因子的值
+     * @param origStartFactor 原因子的上限
+     * @param origEndFactor 原因子的下限
+     * @param startFactor1 新因子的上限
+     * @param endFactor1 新因子的下限
+     * @param percent1 因子所占百分比
+     * @param startFactor2 新因子的上限
+     * @param endFactor2 新因子的下限
+     * @param percent2 因子所占百分比
+     * @return 新因子的值
+     */
+    fun factorMapping(currentFactor: Float, origStartFactor: Float, origEndFactor: Float,
+                      startFactor1: Float, endFactor1: Float, percent1: Float,
+                      startFactor2: Float, endFactor2: Float, percent2: Float): Float {
+        //现在的百分比
+        val temp = (currentFactor - origStartFactor) / (origEndFactor - origStartFactor)
+        //新的总大小
+        val newFactorMax = Math.abs(endFactor1 - startFactor1) + Math.abs(endFactor2 - startFactor2)
+        //区间1
+        return if (percent1 >= temp) {
+            temp * (endFactor1 - startFactor1) / percent1 + startFactor1
+        } else {
+            (temp - percent1) * (endFactor2 - startFactor2) / percent2 + startFactor2
+        }
+    }
+
+    /**
+     * 因子映射
+     * @param currentFactor 原因子的值
+     * @param origStartFactor 原因子的上限
+     * @param origEndFactor 原因子的下限
+     * @param startFactor1 新因子的上限
+     * @param endFactor1 新因子的下限
+     * @param percent1 因子所占百分比
+     * @param startFactor2 新因子的上限
+     * @param endFactor2 新因子的下限
+     * @param percent2 因子所占百分比
+     * @param startFactor3 新因子的上限
+     * @param endFactor3 新因子的下限
+     * @param percent3 因子所占百分比
+     * @return 新因子的值
+     */
+    fun factorMapping(currentFactor: Float, origStartFactor: Float, origEndFactor: Float,
+                      startFactor1: Float, endFactor1: Float, percent1: Float,
+                      startFactor2: Float, endFactor2: Float, percent2: Float,
+                      startFactor3: Float, endFactor3: Float, percent3: Float): Float {
+        //现在的百分比
+        val temp = (currentFactor - origStartFactor) / (origEndFactor - origStartFactor)
+        //新的总大小
+        val newFactorMax = Math.abs(endFactor1 - startFactor1) + Math.abs(endFactor2 - startFactor2)
+        //区间1
+        return if (percent1 >= temp) {
+            temp * (endFactor1 - startFactor1) / percent1 + startFactor1
+        } else if (percent1 + percent2 >= temp) {
+            (temp - percent1) * (endFactor2 - startFactor2) / percent2 + startFactor2
+        } else {
+            (temp - percent1 - percent2) * (endFactor3 - startFactor3) / percent3 + startFactor3
+        }
+    }
+
+    /**
      * 在平面中，一个点绕任意点旋转 radian 弧度
      * 后的点的坐标
      *
