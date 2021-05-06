@@ -8,6 +8,7 @@ import x.chestnut.code.snippet.anim.carView.CarMarketFragment
 import x.chestnut.code.snippet.anim.countNumberView.CountNumberViewFragment
 import x.chestnut.code.snippet.anim.leafLoadingAnim.LeafLoadingViewFragment
 import x.chestnut.code.snippet.anim.lottie.LottieShowFragment
+import x.chestnut.code.snippet.anim.redRibbon.RedRibbonViewFragment
 import x.chestnut.code.snippet.anim.voiceAnim.VoiceAnimFragment
 import x.chestnut.code.snippet.anim.voiceAnimLottie.VoiceAnimLottieFragment
 import x.chestnut.code.snippet.anim.voiceDbChangeView.VoiceDbChangeViewFragment
@@ -39,5 +40,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("叶子 loading 动画") { startFragment(LeafLoadingViewFragment()) }
         addView("Lottie Show") { startFragment(LottieShowFragment()) }
         addView("语音变化View") { startFragment(VoiceDbChangeViewFragment()) }
+        addView("红领巾动画") { startFragment(RedRibbonViewFragment()) }
     }
 }
