@@ -35,6 +35,18 @@ object ViewUtils {
     }
 
     /**
+     * 将旋转应用到矩阵中
+     *
+     * @param rotation  旋转度
+     * @param rotationX 旋转点x
+     * @param rotationY 旋转点y
+     * @param matrix matrix
+     */
+    fun applyRotationToMatrix(rotation: Float, rotationX: Float, rotationY: Float, matrix: Matrix) {
+        matrix.setRotate(rotation, rotationX, rotationY)
+    }
+
+    /**
      * 将缩放应用到矩阵
      * 此缩放是基于Bitmap的中心旋转
      *

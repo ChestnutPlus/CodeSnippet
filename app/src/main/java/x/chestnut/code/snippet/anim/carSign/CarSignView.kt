@@ -23,6 +23,8 @@ import x.chestnut.code.snippet.utils.ViewUtils
  */
 open class CarSignView : View {
 
+    var isReadyToShowAnim = true
+
     //字体
     private var signStr: String? = null
     private var typeface: Typeface? = null
@@ -47,10 +49,11 @@ open class CarSignView : View {
     }
 
     override fun onDraw(canvas: Canvas) {
+        if (!isReadyToShowAnim) return
         //绘制动画区域
-        paint.color = Color.GRAY
-        canvas.translate(100f, 20f)
-        canvas.drawRect(rectFSign, paint)
+//        paint.color = Color.GRAY
+//        canvas.translate(100f, 20f)
+//        canvas.drawRect(rectFSign, paint)
 
         val bTrunk = bitmapTrunk
         val bCover = bitmapCover
@@ -132,6 +135,7 @@ open class CarSignView : View {
     private var progress = PROGRESS_START
 
     fun playAnim() {
+        if (!isReadyToShowAnim) return
         if (progress == 100f) {
             progress = 0f
             objectAnimator = null
@@ -175,5 +179,12 @@ open class CarSignView : View {
 
     fun getProgress(): Float {
         return progress
+    }
+
+    open fun release() {
+        stopAnim()
+        objectAnimator = null
+        ViewUtils.releaseBitmap(bitmapCover)
+        ViewUtils.releaseBitmap(bitmapTrunk)
     }
 }

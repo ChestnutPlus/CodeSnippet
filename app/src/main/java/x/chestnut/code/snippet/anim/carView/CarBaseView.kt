@@ -6,7 +6,9 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.PaintFlagsDrawFilter
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
+import x.chestnut.code.snippet.utils.ViewUtils.releaseBitmap
 
 /**
  * <pre>
@@ -48,16 +50,20 @@ abstract class CarBaseView : View {
     protected var centralAxisX = 0
     protected var changeFactor = 0
     protected var delayChangeFactor = 25
+    protected var positiveAndNegativeFactor = 0
     protected val FACTOR_MAX = 30
+    protected var lastBodyYChange = 0f
 
     //anim
     private var positive = true
     private var delayPositive = true
+    private var positiveAndNegativePositive = true
     private var isStart = false
     private val runnable: Runnable = object : Runnable {
         override fun run() {
             if (positive) changeFactor += 5 else changeFactor -= 5
             if (delayPositive) delayChangeFactor += 5 else delayChangeFactor -= 5
+            if (positiveAndNegativePositive) positiveAndNegativeFactor += 5 else positiveAndNegativeFactor -= 5
             invalidate()
             if (changeFactor >= FACTOR_MAX) {
                 positive = false
@@ -75,16 +81,33 @@ abstract class CarBaseView : View {
         }
     }
 
+    private var onBodyClickListener: OnBodyClickListener? = null
+
     constructor(context: Context?) : super(context) {}
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
         bitmapCarBody = carBody
         bitmapWheel = carWheel
-        getBitmapMeshPoints(bitmapCarBody, carBodyHeightPart, carBodyWidthPart, carBodyNewsPos, carBodyOrigPos)
-        getBitmapMeshPoints(bitmapWheel, carWheelHeightPart, carWheelWidthPart, carWheelNewsPos, carWheelOrigPos)
-        //初始化坐标
-        centralAxisX = bitmapCarBody!!.width / 2
-        bitmapCarBodyHeight = bitmapCarBody!!.height
-        bitmapCarBodyWidth = bitmapCarBody!!.width
+        if (bitmapCarBody != null) {
+            getBitmapMeshPoints(bitmapCarBody, carBodyHeightPart, carBodyWidthPart, carBodyNewsPos, carBodyOrigPos)
+            //初始化坐标
+            centralAxisX = bitmapCarBody!!.width / 2
+            bitmapCarBodyHeight = bitmapCarBody!!.height
+            bitmapCarBodyWidth = bitmapCarBody!!.width
+        }
+        if (bitmapWheel != null) {
+            getBitmapMeshPoints(bitmapWheel, carWheelHeightPart, carWheelWidthPart, carWheelNewsPos, carWheelOrigPos)
+        }
+        initAnimParams()
+    }
+
+    private fun initAnimParams() {
+        positive = true
+        delayPositive = true
+        positiveAndNegativePositive = true
+        changeFactor = 0
+        delayChangeFactor = 25
+        positiveAndNegativeFactor = 0
+        lastBodyYChange = 0f
     }
 
     /**
@@ -98,8 +121,11 @@ abstract class CarBaseView : View {
      * 车轮的x方向的偏移量
      * @return 偏移量
      */
-    protected val wheelXOffset: Int
-        protected get() = 0
+    protected open val wheelXOffset: Int
+        get() = 0
+
+    protected open val bodyYOffset: Int
+        get() = 0
 
     /**
      * 得到网格点集合
@@ -153,7 +179,8 @@ abstract class CarBaseView : View {
                 newPos[x] = origPos[x] + changeFactor * Math.abs((widthPart + 1) / 2 - i % (widthPart + 1)) * (origPos[y] / bitmap!!.height) * xFactor
             }
             //y方向的拉伸，离x周轴线越近变化越大，离顶部（y=0）越近，变化也越小
-            newPos[y] = origPos[y] + changeFactor * (widthPart * heightPart / (heightPart + 1) + 1) * (1 - Math.abs(origPos[x] - centralAxisX) / bitmap!!.width) * yFactor
+            lastBodyYChange = changeFactor * (widthPart * heightPart / (heightPart + 1) + 1) * (1 - Math.abs(origPos[x] - centralAxisX) / bitmap!!.width) * yFactor
+            newPos[y] = origPos[y] + lastBodyYChange
         }
     }
 
@@ -192,31 +219,69 @@ abstract class CarBaseView : View {
         super.onDraw(canvas)
         canvas.drawFilter = paintFlagsDrawFilter
 
-        //车厢主体
-        canvas.save()
-        changeCarBodyPoint(bitmapCarBody, carBodyPartCount, carBodyWidthPart, carBodyHeightPart, carBodyNewsPos, carBodyOrigPos, 0.4f, 0.1f)
-        canvas.translate((width / 2 - bitmapCarBodyWidth / 2).toFloat(), (height / 2 - bitmapCarBodyHeight / 2).toFloat())
-        canvas.drawBitmapMesh(bitmapCarBody!!, carBodyWidthPart, carBodyHeightPart, carBodyNewsPos, 0, null, 0, paint)
-        canvas.restore()
+        if (bitmapCarBody != null) {
+            //车厢主体
+            canvas.save()
+            changeCarBodyPoint(bitmapCarBody, carBodyPartCount, carBodyWidthPart, carBodyHeightPart, carBodyNewsPos, carBodyOrigPos, 0.4f, 0.1f)
+            canvas.translate((width / 2 - bitmapCarBodyWidth / 2).toFloat(), (height / 2 - bitmapCarBodyHeight / 2 + bodyYOffset).toFloat())
+            canvas.drawBitmapMesh(bitmapCarBody!!, carBodyWidthPart, carBodyHeightPart, carBodyNewsPos, 0, null, 0, paint)
+            canvas.restore()
 
-        //车轮子，左边
-        canvas.save()
-        canvas.translate((width / 2 - bitmapWheel!!.width + wheelXOffset).toFloat(), (height / 2 + bitmapCarBody!!.height / 2 - 24).toFloat())
-        changeWheelPoint(changeFactor)
-        canvas.drawBitmapMesh(bitmapWheel!!, carWheelWidthPart, carWheelHeightPart, carWheelNewsPos, 0, null, 0, paint)
-        canvas.restore()
+            if (bitmapWheel != null) {
+                //车轮子，左边
+                canvas.save()
+                canvas.translate((width / 2 - bitmapWheel!!.width + wheelXOffset).toFloat(), (height / 2 + bitmapCarBody!!.height / 2 - 24).toFloat())
+                changeWheelPoint(changeFactor)
+                canvas.drawBitmapMesh(bitmapWheel!!, carWheelWidthPart, carWheelHeightPart, carWheelNewsPos, 0, null, 0, paint)
+                canvas.restore()
 
-        //车轮子，右边
-        canvas.save()
-        canvas.translate((width / 2 + 25 + wheelXOffset).toFloat(), (height / 2 + bitmapCarBody!!.height / 2 - 24).toFloat())
-        changeWheelPoint(delayChangeFactor)
-        canvas.drawBitmapMesh(bitmapWheel!!, carWheelWidthPart, carWheelHeightPart, carWheelNewsPos, 0, null, 0, paint)
-        canvas.restore()
+                //车轮子，右边
+                canvas.save()
+                canvas.translate((width / 2 + 25 + wheelXOffset).toFloat(), (height / 2 + bitmapCarBody!!.height / 2 - 24).toFloat())
+                changeWheelPoint(delayChangeFactor)
+                canvas.drawBitmapMesh(bitmapWheel!!, carWheelWidthPart, carWheelHeightPart, carWheelNewsPos, 0, null, 0, paint)
+                canvas.restore()
+            }
+        }
+    }
+
+    //点击的范围
+    private val clickXRange = 300f
+    private val clickYRange = 500f
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+            }
+            MotionEvent.ACTION_MOVE -> {
+            }
+            MotionEvent.ACTION_UP -> {
+                val x = event.x //触摸点相对于其所在组件坐标系的坐标
+                val y = event.y
+                val left = width / 2 - clickXRange / 2
+                val top = height / 2 - clickYRange / 2
+                val right = width / 2 + clickXRange / 2
+                val bottom = height / 2 + clickYRange / 2 - 100
+                if (x in left..right && y >= top && y <= bottom && event.eventTime - event.downTime < 200) {
+                    onBodyClickListener?.onClick()
+                    return true
+                }
+            }
+        }
+        return super.onTouchEvent(event)
+    }
+
+    fun setOnBodyClickListener(onBodyClickListener: OnBodyClickListener) {
+        this@CarBaseView.onBodyClickListener = onBodyClickListener
+    }
+
+    interface OnBodyClickListener {
+        fun onClick()
     }
 
     fun startAnim() {
         if (!isStart) {
             isStart = true
+            initAnimParams()
             post(runnable)
         }
     }
@@ -225,10 +290,28 @@ abstract class CarBaseView : View {
         if (isStart) {
             isStart = false
             removeCallbacks(runnable)
-            changeFactor = 0
-            delayChangeFactor = 25
             this.invalidate()
+            initAnimParams()
         }
+    }
+
+    /**
+     * 改变 factor 的范围
+     * @param factor 新因子
+     * @return 新值
+     */
+    protected open fun getChangeFactorByNewFactor(factor: Float): Float {
+        return changeFactor * factor / FACTOR_MAX
+    }
+
+    protected open fun getDelayChangeFactorByNewFactor(factor: Float): Float {
+        return delayChangeFactor * factor / FACTOR_MAX
+    }
+
+    open fun release() {
+        stopAnim()
+        releaseBitmap(bitmapCarBody)
+        releaseBitmap(bitmapWheel)
     }
 
     init {

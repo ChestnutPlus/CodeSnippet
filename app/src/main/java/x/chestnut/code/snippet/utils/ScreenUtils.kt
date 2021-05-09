@@ -1,6 +1,7 @@
 package x.chestnut.code.snippet.utils
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.ActivityInfo
 
 /**
@@ -27,5 +28,11 @@ object ScreenUtils {
             }
         }
         return false
+    }
+
+    fun getScreenWidthByPX(context: Context?): Int {
+        val resources = context?.resources
+        val dm = resources?.displayMetrics
+        return dm?.widthPixels ?: 0
     }
 }

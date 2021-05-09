@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <x.chestnut.code.snippet.anim.carTrain.recycler.recyclerView.CarRecyclerGallery
+        android:id="@+id/recycler_view"
+        android:layout_marginBottom="-250px"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <x.chestnut.code.snippet.anim.carSign.CarSignView
+        android:id="@+id/car_sign_view"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="225px"
+        android:layout_width="240px"
+        android:layout_height="290px" />
+</RelativeLayout>

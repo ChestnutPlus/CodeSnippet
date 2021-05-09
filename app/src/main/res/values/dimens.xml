@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="car_width">230dp</dimen>
+    <dimen name="car_locomotive_width">330dp</dimen>
+    <dimen name="car_empty_width">300dp</dimen>
+</resources>

@@ -5,6 +5,7 @@ import x.chestnut.code.snippet.R
 import x.chestnut.code.snippet.anim.carBgView.CarBgViewFragment
 import x.chestnut.code.snippet.anim.carSign.CarAdvancedSignFragment
 import x.chestnut.code.snippet.anim.carSign.CarSignFragment
+import x.chestnut.code.snippet.anim.carTrain.CarTrainFragment
 import x.chestnut.code.snippet.anim.carView.CarMarketFragment
 import x.chestnut.code.snippet.anim.countNumberView.CountNumberViewFragment
 import x.chestnut.code.snippet.anim.leafLoadingAnim.LeafLoadingViewFragment
@@ -45,5 +46,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("红领巾动画") { startFragment(RedRibbonViewFragment()) }
         addView("碎纸屑动画") { startFragment(ShreddedPaperFragment()) }
         addView("Car背景动画") { startFragment(CarBgViewFragment()) }
+        addView("Car Train") { startFragment(CarTrainFragment()) }
     }
 }
