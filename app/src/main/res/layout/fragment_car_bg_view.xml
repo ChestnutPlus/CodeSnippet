@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <x.chestnut.code.snippet.anim.carBgView.CarBgScrollView
+        android:visibility="visible"
+        android:id="@+id/car_bg_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <x.chestnut.code.snippet.anim.carBgView.CarGrassLandView
+        android:id="@+id/car_grass_land_sign_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
