@@ -12,6 +12,7 @@ import x.chestnut.code.snippet.anim.leafLoadingAnim.LeafLoadingViewFragment
 import x.chestnut.code.snippet.anim.lottie.LottieShowFragment
 import x.chestnut.code.snippet.anim.redRibbon.RedRibbonViewFragment
 import x.chestnut.code.snippet.anim.shreddedPaper.ShreddedPaperFragment
+import x.chestnut.code.snippet.anim.storyWelcomeView.StoryWelcomeViewFragment
 import x.chestnut.code.snippet.anim.voiceAnim.VoiceAnimFragment
 import x.chestnut.code.snippet.anim.voiceAnimLottie.VoiceAnimLottieFragment
 import x.chestnut.code.snippet.anim.voiceDbChangeView.VoiceDbChangeViewFragment
@@ -47,5 +48,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("碎纸屑动画") { startFragment(ShreddedPaperFragment()) }
         addView("Car背景动画") { startFragment(CarBgViewFragment()) }
         addView("Car Train") { startFragment(CarTrainFragment()) }
+        addView("故事机欢迎动画") { startFragment(StoryWelcomeViewFragment()) }
     }
 }
