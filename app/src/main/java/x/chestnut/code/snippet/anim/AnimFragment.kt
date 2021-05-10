@@ -8,6 +8,7 @@ import x.chestnut.code.snippet.anim.carSign.CarSignFragment
 import x.chestnut.code.snippet.anim.carTrain.CarTrainFragment
 import x.chestnut.code.snippet.anim.carView.CarMarketFragment
 import x.chestnut.code.snippet.anim.countNumberView.CountNumberViewFragment
+import x.chestnut.code.snippet.anim.hlLoading.HlLoadingViewFragment
 import x.chestnut.code.snippet.anim.leafLoadingAnim.LeafLoadingViewFragment
 import x.chestnut.code.snippet.anim.lottie.LottieShowFragment
 import x.chestnut.code.snippet.anim.redRibbon.RedRibbonViewFragment
@@ -49,5 +50,6 @@ class AnimFragment : ScrollBaseFragment() {
         addView("Car背景动画") { startFragment(CarBgViewFragment()) }
         addView("Car Train") { startFragment(CarTrainFragment()) }
         addView("故事机欢迎动画") { startFragment(StoryWelcomeViewFragment()) }
+        addView("哈鹿加载动画") { startFragment(HlLoadingViewFragment()) }
     }
 }
